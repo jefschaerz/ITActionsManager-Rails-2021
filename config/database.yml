@@ -14,12 +14,12 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: root
+  password: 
   host: localhost
 
 development:
   <<: *default
-  database: ITActionsManager_Rails_2021_development
+  database: ITActionsManager
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
