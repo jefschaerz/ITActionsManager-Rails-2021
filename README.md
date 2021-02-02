@@ -54,7 +54,7 @@ Tables nécessaires :
 
 <a name="ressources-externes"></a>
 # Ressources externes
-A décrire..
+Bootstrap v5.0 (par CDN) 
 
 
 <a name="remarques-projet"></a>
