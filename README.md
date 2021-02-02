@@ -30,7 +30,7 @@ Deux types d'utilisateur sont possibles :
 Lors de la création d'une nouvelle intervention ou équipement, il faut fournir les informations nécessaires.
 
 Les équipements possèdent les informations suivantes :
-* No d'équipement (unique)
+* No d'équipement (unique) / Auto
 * Description (ex PC001)
 * Type (PC ou Serveur ou Imprimante)
 
@@ -46,10 +46,11 @@ Les interventions sont créées en fournissant les informations :
 <a name="choix-developpementn"></a>
 # Choix du développpement
 Tables nécessaires :
-* Pour les users (No, nom, mdp)
-* Pour les types d'équipement (No, DescriptionType)
-* Pour les équipements (No, Description, Type)
-* Pour les interventions (No, voir ci-dessus)
+* Pour les users (id, username= string, pwassword_digest=string)
+* Pour les types d'équipement (id, description=string)
+* Pour les équipements (id, description=string, type=id)
+* Pour les catégories (id, description=string))
+* Pour les interventions (id, action_date=datetime, user=id, category=Id, equipement=Id, action_details=text, open_state=boolean)
 
 <a name="ressources-externes"></a>
 # Ressources externes
