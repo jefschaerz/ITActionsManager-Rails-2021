@@ -55,6 +55,8 @@ Tables nécessaires :
 <a name="ressources-externes"></a>
 # Ressources externes
 Bootstrap v5.0 (par CDN) 
+GEM Bcrypt pour password
+Flash messages : https://www.rubyguides.com/2019/11/rails-flash-messages/
 
 
 <a name="remarques-projet"></a>

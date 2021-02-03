@@ -2,5 +2,13 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: npm install
-    command: npm start
+  - init: bin/setup
+    command: bin/rails server
+
+vscode:
+  extensions:
+    - bung87.vscode-gemfile@0.4.1:jYT6FRuH8C+Y+pBqaSL8BA==
+    - wingrunr21.vscode-ruby@0.27.0:beIqQUhLRuJ5Vao4B2Lyng==
+    - sianglim.slim@0.1.1:NQFS+52G0SH0/fp66K9i6g==
+    - rebornix.ruby@0.27.0:QyGBeRyslOfdRgOPRGm6PQ==
+    - bung87.rails@0.16.7:IXQaE7PUhn9K+2iTc/HF1w==
