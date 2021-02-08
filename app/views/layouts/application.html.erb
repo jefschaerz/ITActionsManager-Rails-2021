@@ -60,14 +60,6 @@
     </nav>
 
     <!-- Display Flash messages -->
-    <% flash.each do |type, msg| %>
-    <div class="container">
-        <div class="alert alert-info">
-            <%= msg %>
-        </div>
-    </div>
-    <% end %>
-
     <div class="container">
         <% if flash[:success] %>
         <div class="alert alert-success">
