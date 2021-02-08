@@ -23,5 +23,6 @@ module ITActionsManagerRails2021
     config.generators do |g|
         g.test_framework false
     end
+
   end
 end

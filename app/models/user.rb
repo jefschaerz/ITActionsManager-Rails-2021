@@ -10,4 +10,9 @@ class User < ApplicationRecord
     format: {with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/},
     uniqueness: {case_sensitive: false}
  
+    # Avoid repetition
+    def to_session
+      {id: id}  
+    end
+
 end

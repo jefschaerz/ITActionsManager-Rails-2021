@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # Allow action also if not connected :
-  skip_before_action :only_signed_in, only: [:new, :create]
+  skip_before_action :only_signed_in, only: [:new, :create, :index]
   #before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
