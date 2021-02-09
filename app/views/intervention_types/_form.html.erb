@@ -1,0 +1,22 @@
+<%= form_with(model: intervention_type) do |form| %>
+  <% if intervention_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intervention_type.errors.count, "error") %> prohibited this intervention_type from being saved:</h2>
+
+      <ul>
+        <% intervention_type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

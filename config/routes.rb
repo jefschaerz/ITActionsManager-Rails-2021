@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :intervention_types
+  resources :equipment_types
   resources :interventions
   resources :equipement_types
   root 'users#index'
