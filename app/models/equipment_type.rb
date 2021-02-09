@@ -1,3 +1,3 @@
-class EquipmentType < ApplicationRecord
-    has_many :equipements
+class EquipmentType < ApplicationRecord  
+    has_many :resources
 end
