@@ -11,7 +11,8 @@
         </form>  
 
         <!-- TODO Use of the sessions#create route not working (always call sessions#new : WHY ??-->
-        <%= form_for (:user), :url => {:controller => "sessions", :action => "create"}, html: { class: "form-horizontal"} do |f| %>
+        <!--%= form_for (:user), :url => {:controller => "sessions", :action => "create"}, html: { class: "form-horizontal"} do |f| %-->
+        <%= form_for :user, url: new_session_path, html: { class: "form-horizontal"} do |f| %>
         <div class="mb-3">
             <%= f.label :username, "Nom d'utilisateur", class: 'form-label' %>
             <div class="mb-3 col-md-6">
