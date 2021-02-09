@@ -1,31 +1,37 @@
 <!-- Manage errors -->
 
-<!-- Show debug information -->
-<%= debug @user %>
+<!-- Show debug information 
+<%= debug @user %> -->
 <form>
-<div class="form mt-3">
-  <h3>Se connecter</h3> 
-    <%= form_for :user, url: sessions_path, class: 'form-horizontal' do |f| %>
-    <div class="mb-3">
-      <%= f.label :username, "Nom d'utilisateur", class: 'form-label' %>
-      <div class="mb-3 col-md-6">
-        <%= f.text_field :username, class: 'form-control' %>
-      </div>
-    </div>
+    <div class="form mt-3">
+        <h3>Se connecter</h3>
+   
+        <form action="/sessions" method="POST">
+            <!-- Necessary for the for below to work correctly : WHY -->
+        </form>  
 
-    <div class="mb-3">
-      <%= f.label :password, "Mot de passe", class: 'col-md-4 form-label' %>
-      <div class="mb-3 col-md-6">
-        <%= f.password_field :password, class: 'form-control' %>
-      </div>
-    </div>
+        <!-- TODO Use of the sessions#create route not working (always call sessions#new : WHY ??-->
+        <%= form_for (:user), :url => {:controller => "sessions", :action => "create"}, html: { class: "form-horizontal"} do |f| %>
+        <div class="mb-3">
+            <%= f.label :username, "Nom d'utilisateur", class: 'form-label' %>
+            <div class="mb-3 col-md-6">
+                <%= f.text_field :username, class: 'form-control' %>
+            </div>
+        </div>
 
-    <div class="mb-3">
-      <div class="mb-3 col-md-6">
-        <button type="submit" class="btn btn-primary">Se connecter</button>    
-      </div>
-    </div>
+        <div class="mb-3">
+            <%= f.label :password, "Mot de passe", class: 'col-md-4 form-label' %>
+            <div class="mb-3 col-md-6">
+                <%= f.password_field :password, class: 'form-control' %>
+            </div>
+        </div>
 
-    <%end %>
-  </div>
+        <div class="mb-3">
+            <div class="mb-3 col-md-6">
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </div>
+        </div>
+
+        <%end%>
+    </div>
 </form>

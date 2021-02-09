@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'users#index'
+  
+  post "/signin", to: "sessions#create", as: "signin"
  
   resources :sessions, only: [:new, :create, :destroy]
 
