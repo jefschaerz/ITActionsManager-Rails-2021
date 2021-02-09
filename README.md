@@ -61,4 +61,4 @@ Tables nécessaires :
 
 <a name="remarques-projet"></a>
 # Remarques sur le projet
-A décrire..
+* Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté

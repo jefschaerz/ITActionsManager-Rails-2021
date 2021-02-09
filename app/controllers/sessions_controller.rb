@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   # Allow action also if not connected :
   skip_before_action :only_signed_in, only: [:new, :create]
+  # Allow to create session only if not yet signed-in
+  before_action :only_signed_out, only: [:new, :create]
   
   def new
     puts '** We are in NEW SessionController'
@@ -11,7 +13,7 @@ class SessionsController < ApplicationController
     # Check info provided to logon
     user_param = params.require(:user)
     @user = User.where(username: user_param[:username]).first
-     
+    puts @user.inspect 
     # Check password
     if @user and @user.authenticate(user_param[:password])
     # Add info in session cookie
@@ -24,6 +26,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.destroy
-    redirect_to new_session_path, success: 'Vous êtes déconnecté'
+    redirect_to new_session_path, success: 'Vous êtes déconnecté correctement'
   end
 end

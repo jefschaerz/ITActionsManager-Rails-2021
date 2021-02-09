@@ -14,6 +14,13 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    # Define is a user is connected using session
+    def only_signed_out
+        if user_signed_in?
+            redirect_to profil_path if user_signed_in?
+        end
+    end
+
     # Define if a user singed in
     def user_signed_in?
         !current_user.nil?

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Allow action also if not connected :
   skip_before_action :only_signed_in, only: [:new, :create, :index]
-  #before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :only_signed_out, only: [:new, :create, :confirm]
 
   # GET /users or /users.json
   def index
@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    # Allow to edit current users only
+    puts '** Dans edit...'
     @user = current_user
   end
 
@@ -46,12 +48,17 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    puts '** Dans update...'
+    @user = current_user
+    user_params = params.require(:user).permit(:username, :firstname, :lastname, :email)
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
+        puts 'Update réalisé'
+        format.html { redirect_to profil_path, success: "User was successfully updated." }
+        #format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        puts 'Update echouée'
+        format.html { render :edit, danger: "Problem during udpate."}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

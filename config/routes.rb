@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'users#index'
   
   post "/signin", to: "sessions#create", as: "signin"
+  get '/profil', to: 'users#edit', as: :profil
+  patch '/profil', to: 'users#update'
   
   #Sessions manually defined
   get '/login', to: 'sessions#new', as: :new_session
