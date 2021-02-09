@@ -46,11 +46,11 @@ Les interventions sont créées en fournissant les informations :
 <a name="choix-developpementn"></a>
 # Choix du développpement
 Tables nécessaires :
-* Pour les users (id, username= string, pwassword_digest=string)
-* Pour les types d'équipement (id, description=string)
-* Pour les équipements (id, description=string, type=id)
-* Pour les catégories (id, description=string))
-* Pour les interventions (id, action_date=datetime, user=id, category=Id, equipement=Id, action_details=text, open_state=boolean)
+* Pour les users (id, username: string, email:string, password_digest:string, firstname:string, lastname:string, role:string)
+* Pour les types d'équipement (id, description:string)
+* Pour les équipements (id, description:string, type:id)
+* Pour les catégories (id, description:string))
+* Pour les interventions (id, action_date:datetime, user:id, category:Id, equipement:Id, action_details:text, open_state:boolean)
 
 <a name="ressources-externes"></a>
 # Ressources externes
