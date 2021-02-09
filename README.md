@@ -48,7 +48,7 @@ Les interventions sont créées en fournissant les informations :
 Tables nécessaires :
 * Pour les users (id, username: string, email:string, password_digest:string, firstname:string, lastname:string, role:string)
 * Pour les types d'équipement (id, description:string)
-* Pour les équipements (id, description:string, type:id)
+* Pour les équipements (id, description:string, type:reference)
 * Pour les catégories (id, description:string))
 * Pour les interventions (id, action_date:datetime, user:id, category:Id, equipement:Id, action_details:text, open_state:boolean)
 

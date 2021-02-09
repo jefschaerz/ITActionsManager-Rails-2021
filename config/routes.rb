@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :intervention_types
-  resources :equipment_types
-  resources :interventions
-  resources :equipement_types
-  root 'users#index'
+    root 'users#index'
   
   post "/signin", to: "sessions#create", as: "signin"
 
@@ -18,4 +14,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create, :edit, :index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :intervention_types
+  resources :equipment_types
+  resources :interventions
+  
 end
