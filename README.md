@@ -48,9 +48,9 @@ Les interventions sont créées en fournissant les informations :
 Tables nécessaires :
 * Pour les users (id, username: string, email:string, password_digest:string, firstname:string, lastname:string, role:string)
 * Pour les types d'équipement (id, description:string)
-* Pour les équipements (id, description:string, type:reference)
-* Pour les catégories (id, description:string))
-* Pour les interventions (id, action_date:datetime, user:id, category:Id, equipement:Id, action_details:text, open_state:boolean)
+* Pour les resources (id, description:string, type_equipement:reference)
+* Pour les types d'intervention (id, description:string)
+* Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, open_state:boolean)
 
 <a name="ressources-externes"></a>
 # Ressources externes
