@@ -17,10 +17,14 @@ class ResourcesController < ApplicationController
 
   # GET /resources/1/edit
   def edit
+    puts '** We are in EDIT ..'
+    # Edit selected resource
+    @resource = Resource.find(params[:id])
   end
 
   # POST /resources or /resources.json
   def create
+    puts '** We are in CREATE ..'
     @resource = Resource.new(resource_params)
 
     respond_to do |format|
@@ -36,6 +40,7 @@ class ResourcesController < ApplicationController
 
   # PATCH/PUT /resources/1 or /resources/1.json
   def update
+    puts '** We are in UPDATE...'
     respond_to do |format|
       if @resource.update(resource_params)
         format.html { redirect_to @resource, notice: "Resource was successfully updated." }

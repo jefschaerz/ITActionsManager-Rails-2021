@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_142930) do
+ActiveRecord::Schema.define(version: 2021_02_09_213208) do
 
   create_table "equipment_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "description"
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 2021_02_09_142930) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "interventions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "date"
+    t.string "summary"
+    t.text "details"
+    t.boolean "state"
+    t.bigint "resource_id", null: false
+    t.bigint "intervention_type_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["intervention_type_id"], name: "index_interventions_on_intervention_type_id"
+    t.index ["resource_id"], name: "index_interventions_on_resource_id"
+    t.index ["user_id"], name: "index_interventions_on_user_id"
   end
 
   create_table "resources", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -42,5 +57,8 @@ ActiveRecord::Schema.define(version: 2021_02_09_142930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "interventions", "intervention_types"
+  add_foreign_key "interventions", "resources"
+  add_foreign_key "interventions", "users"
   add_foreign_key "resources", "equipment_types"
 end

@@ -1,6 +1,26 @@
-<h1>Editing Resource</h1>
+<!-- Manage errors -->
+<% if @resource.errors.any? %>
+<div class="alert alert-danger">
+    <ul>
+        <% @resource.errors.full_messages.each do |message| %>
+        <li> <%= message %></li>
+        <%end%>
+    </ul>
+</div>
+<%end%>
+<form>
+    <div class="form mt-3">
+        <h3>Resource</h3>
+        <p>ResourceUser.persisted :' <%= debug @resource.persisted? %></p>
+        <p> Resources : <%= debug @resource.inspect %> </p>
 
+    <%= form_for @resource, url: resource_path(@resource) do |form| %>
+        <%= form.text_field :description %>
+        <!-- TODO : Here also will not do the patch !! Link to current_user ?-->
+        <%= form.submit %>
+    <% end %>
+</form>
+<!-- By scaffold 
 <%= render 'form', resource: @resource %>
-
 <%= link_to 'Show', @resource %> |
-<%= link_to 'Back', resources_path %>
+<%= link_to 'Back', resources_path % -->
