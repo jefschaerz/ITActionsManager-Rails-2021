@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :destroy_session
   
-  patch '/resource/:id', to: 'resource#update'
+  #patch '/resource/:id', to: 'resource#update'
 
   #resources :users, only: [:show, :new, :create, :edit, :index, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

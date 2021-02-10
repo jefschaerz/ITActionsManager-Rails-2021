@@ -1,58 +1,50 @@
 <!-- Manage errors -->
 <% if @user.errors.any? %>
-  <div class="alert alert-danger">
+<div class="alert alert-danger">
     <ul>
-      <% @user.errors.full_messages.each do |message| %>
+        <% @user.errors.full_messages.each do |message| %>
         <li> <%= message %></li>
-      <%end%>
+        <%end%>
     </ul>
-  </div>
+</div>
 <%end%>
 
-<form>
 <div class="form mt-3">
-  <h3>S'inscrire</h3> 
+    <h3>S'inscrire</h3>
     <%= form_for @user, class: 'form-horizontal' do |f| %>
     <div class="mb-3">
-      <%= f.label :username, "Nom d'utilisateur", class: 'form-label' %>
-      <div class="mb-3 col-md-6">
-        <%= f.text_field :username, class: 'form-control' %>
-      </div>
+        <%= f.label :username, "Nom d'utilisateur", class: 'form-label' %>
+        <div class="mb-3 col-md-6">
+            <%= f.text_field :username, class: 'form-control' %>
+        </div>
     </div>
 
     <div class="mb-3">
-      <%= f.label :email, "Email", class: 'col-md-4 form-label' %>
-      <div class="mb-3 col-md-6">
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
+        <%= f.label :email, "Email", class: 'col-md-4 form-label' %>
+        <div class="mb-3 col-md-6">
+            <%= f.email_field :email, class: 'form-control' %>
+        </div>
     </div>
 
-     <div class="mb-3">
-      <%= f.label :password, "Mot de passe", class: 'col-md-4 form-label' %>
-      <div class="mb-3 col-md-6">
-        <%= f.password_field :password, class: 'form-control' %>
-      </div>
+    <div class="mb-3">
+        <%= f.label :password, "Mot de passe", class: 'col-md-4 form-label' %>
+        <div class="mb-3 col-md-6">
+            <%= f.password_field :password, class: 'form-control' %>
+        </div>
     </div>
 
-     <div class="mb-3">
-      <%= f.label :password_confirmation, "Confirmer le mot de passee", class: 'col-md-4 form-label' %>
-      <div class="mb-3 col-md-6">
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
-      </div>
+    <div class="mb-3">
+        <%= f.label :password_confirmation, "Confirmer le mot de passee", class: 'col-md-4 form-label' %>
+        <div class="mb-3 col-md-6">
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
     </div>
 
-     <div class="mb-3">
-      <div class="mb-3 col-md-6">
-        <button type="submit" class="btn btn-primary">S'inscrire</button>    
-      </div>
+    <div class="mb-3">
+        <div class="mb-3 col-md-6">
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        </div>
     </div>
 
     <%end %>
-
-
-    <!-- Method auto pas scaffold : >
-    <%= render 'form', user: @user %>
-
-    <%= link_to 'Back', users_path %> -->
-  </div>
-</form>
+</div>
