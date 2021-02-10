@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     # Define is a user is connected using session
     def only_signed_in
         if !user_signed_in?
-            redirect_to new_user_path, danger: "Vous devez être connecté pour cette action !"
+            redirect_to new_session_path, danger: "Vous devez être connecté pour cette action !"
         end
     end
 
