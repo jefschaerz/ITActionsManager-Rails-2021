@@ -1,6 +1,3 @@
-
-
-
 <!-- Manage errors -->
 <% if @device.errors.any? %>
 <div class="alert alert-danger">
@@ -13,7 +10,7 @@
 <%end%>
 
 <div class="form mt-3">
-    <h3>Créer un device</h3>
+    <h3>Add a new device</h3>
     <%= simple_form_for @device do |f| %>
     <div class="mb-3">
         <%= f.label :description, "Description", class: 'form-label' %>
@@ -22,14 +19,14 @@
         </div>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 col-md-6">
     <!-- Use simple_form association to get equipment_type description in field but save the id -->
       <%= f.association :equipment_type, collection: EquipmentType.pluck(:description, :id), prompt: "Select the equipment type" %>  
     </div>
 
    <div class="mb-3">
         <div class="mb-3 col-md-6">
-            <button type="submit" class="btn btn-primary">Créer</button>
+            <button type="submit" class="btn btn-primary">Add</button>
         </div>
     </div>
 
