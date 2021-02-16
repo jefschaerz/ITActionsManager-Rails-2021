@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     
+ 
   root 'users#index'
   
   post "/signin", to: "sessions#create", as: "signin"
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :destroy_session
   
-    #resources :users, only: [:show, :new, :create, :edit, :index, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
   resources :intervention_types
@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :interventions 
   resources :resources
   resources :interventions
+  resources :devices
   
 end

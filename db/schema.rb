@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_213208) do
+ActiveRecord::Schema.define(version: 2021_02_16_144239) do
+
+  create_table "devices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "description"
+    t.bigint "equipment_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["equipment_type_id"], name: "index_devices_on_equipment_type_id"
+  end
 
   create_table "equipment_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "description"
@@ -57,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_213208) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "devices", "equipment_types"
   add_foreign_key "interventions", "intervention_types"
   add_foreign_key "interventions", "resources"
   add_foreign_key "interventions", "users"
