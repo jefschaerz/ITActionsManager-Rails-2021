@@ -22,19 +22,22 @@
         <td><%= user.password_digest %></td>
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
-        <!-- td><%= link_to 'Show', user %></td>
+        <% if isAdmin? %>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td -->
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>     
     <% end %>
   </tbody>
 </table>
 
+
+
 <p> user : <%= debug @users.inspect %> </p>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
-<!--%= flash.now[:success] = "Demo" %-->
+<% if isAdmin? %>
+  <%= link_to 'New User', new_user_path %>
+<%end%>
 
 

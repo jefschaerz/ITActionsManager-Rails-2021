@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   post "/signin", to: "sessions#create", as: "signin"
 
-  get '/profil', to: 'users#edit', as: :profil
+  get '/profil', to: 'users#profil', as: :profil
   patch '/profil', to: 'users#update'
   
   #Sessions manually defined

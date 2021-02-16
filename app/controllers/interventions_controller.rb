@@ -21,14 +21,15 @@ class InterventionsController < ApplicationController
 
   # POST /interventions or /interventions.json
   def create
-    
     @intervention = Intervention.new(intervention_params)
     puts 'Params :', intervention_params.inspect   
 
     #Add user value (connected)
     @intervention.user_id = current_user.id
+    #Add state info (open or closed)
     @intervention.state = 1
     puts 'Interventions :', @intervention.inspect
+    
     respond_to do |format|
       if @intervention.save
         format.html { redirect_to @intervention, notice: "Intervention was successfully created." }

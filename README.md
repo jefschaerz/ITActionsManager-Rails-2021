@@ -14,22 +14,26 @@ Ce repository contient les sources du projet "ITActionManager" réalisé dans le
 
 <a name="description-application"></a>
 # Description de l'application
-L'application "ITActionsManager" permet à des utilisateurs de type "Admin" ou "User" de saisir des informations sur les actions réalisées 
+L'application "ITActionsManager" permet à des utilisateurs de type "Admin" ou "Contributor" de saisir des informations sur les actions réalisées 
 sur des équipements informatiques de plusieurs type (PC, serveurs ou imprimantes).
 C'est en fait un journal des actions de suivi.
 
 <a name="utilisation-application"></a>
 # Utilisation de l'application
 L'utilisateur doit d'abord se connecter dans l'application avec son nom d'utilisateur et mot de passe.
-Deux types d'utilisateur sont possibles :
-* L'utilisateur "Admin" a le droit de créer/modifier ou effacer des équipements. 
-	Il peut créer un nouvel utilisateur User ou Admin.
-	Il peut également effectuer toutes les opérations du "User".
-* L'utilisateur "User" ne peut que visualiser, créer ou modifier des interventions sur des équipements.
+Deux types d'utilisateur sont possibles (role) :
+* Admin
+* Contributor 
+L'utilisateur "Admin" a le droit de  :
+* Créer/modifier ou effacer des type d'équipements, type d'interventions et des appareils
+* Créer un nouvel utilisateur User ou Admin.
+* Effectuer toutes les opérations du "Contributor".
+L'utilisateur "Contributor" ne peut que :
+** visualiser, créer ou modifier des interventions sur des équipements.
 
 Lors de la création d'une nouvelle intervention ou équipement, il faut fournir les informations nécessaires.
 
-Les "device" possèdent les informations suivantes :
+Les appareils (device) possèdent les informations suivantes :
 * No d'équipement (unique) / Auto
 * Description (ex PC001)
 * Type (PC ou Serveur ou Imprimante)
@@ -41,7 +45,7 @@ Les "interventions" sont créées en fournissant les informations :
 * Catégorie (Maintenance, Update, Incident)
 * Choix de l'équipement (ci-dessus)
 * Détails de l'intervention
-* Eventuellement : Etat de l'intervention (Ouvert, Clos)
+* Etat de l'intervention (Open, Close)
 
 <a name="choix-developpementn"></a>
 # Choix du développpement
@@ -50,7 +54,7 @@ Tables nécessaires :
 * Pour les types d'équipement (id, description:string)
 * Pour les resources (id, description:string, type_equipement:reference)
 * Pour les types d'intervention (id, description:string)
-* Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, open_state:boolean)
+* Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, state:boolean)
 
 <a name="ressources-externes"></a>
 # Ressources externes

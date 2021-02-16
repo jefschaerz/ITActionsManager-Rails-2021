@@ -17,11 +17,24 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+
+  # GET /profil
+  def profil
+    # Availble for the current_user profil
+    @user = current_user
+    render :edit
+  end;
+
   # GET /users/1/edit
   def edit
-    # Allow to edit current users only
-    puts '** Dans edit...'
-    @user = current_user
+    # Allow to edit users by admin only
+    # TODO : why isAdmin? not recognized here !
+    # Change depending on isAdmin or not
+    if current_user.role ==='admin'
+      @user = User.find_by_id(params[:id]) 
+    else 
+      @user = current_user
+    end 
   end
 
   # POST /users or /users.json
@@ -49,6 +62,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     puts '** Dans update...'
+    #TOOD : Check if done by Profil or admin !
     @user = current_user
     user_params = params.require(:user).permit(:username, :firstname, :lastname, :email)
     respond_to do |format|
