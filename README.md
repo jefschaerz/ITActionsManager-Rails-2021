@@ -57,6 +57,7 @@ Tables nécessaires :
 *Bootstrap v5.0 (par CDN) 
 *GEM Bcrypt pour password
 *Flash messages : https://www.rubyguides.com/2019/11/rails-flash-messages/
+*Simple_Form :https://github.com/heartcombo/simple_form
 
 
 <a name="remarques-projet"></a>
