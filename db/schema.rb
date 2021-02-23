@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_184902) do
+ActiveRecord::Schema.define(version: 2021_02_23_203820) do
 
   create_table "devices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "description"
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 2021_02_16_184902) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "intervention_states", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "intervention_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -36,12 +42,12 @@ ActiveRecord::Schema.define(version: 2021_02_16_184902) do
     t.datetime "date"
     t.string "summary"
     t.text "details"
-    t.boolean "state"
     t.bigint "intervention_type_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "device_id", null: false
+    t.integer "state_id", default: 1
     t.index ["device_id"], name: "index_interventions_on_device_id"
     t.index ["intervention_type_id"], name: "index_interventions_on_intervention_type_id"
     t.index ["user_id"], name: "index_interventions_on_user_id"

@@ -14,16 +14,18 @@ Ce repository contient les sources du projet "ITActionManager" réalisé dans le
 
 <a name="description-application"></a>
 # Description de l'application
-L'application "ITActionsManager" permet à des utilisateurs de type "Admin" ou "Contributor" de saisir des informations sur les actions réalisées 
-sur des équipements informatiques de plusieurs type (PC, serveurs ou imprimantes).
-C'est en fait un journal des actions de suivi.
+L'application "ITActionsManager" permet à des gérer les actions et interventions réalisées sur des équipements informatiques de plusieurs types. 
+C'est en fait un journal des actions de suivi sur les équipements.
 
 <a name="utilisation-application"></a>
 # Utilisation de l'application
-L'utilisateur doit d'abord se connecter dans l'application avec son nom d'utilisateur et mot de passe.
+L'utilisateur doit d'abord se connecter dans l'application avec son nom d'utilisateur et mot de passe. 
+Pour un nouvel utilisteur, il est nécessaire de s'inscrire en fournissant un username et une adresse e-mail aini qu'un mot de passe.
+
 Deux types d'utilisateur sont possibles (role) :
 * Admin
 * Contributor 
+
 L'utilisateur "Contributor" ne peut que :
 ** Editer son profil
 ** Visualiser la liste des équipements, la lisite des types d'intervention 
@@ -47,7 +49,7 @@ Les "interventions" sont créées en fournissant les informations :
 * Catégorie (Maintenance, Update, Incident)
 * Choix de l'équipement (ci-dessus)
 * Détails de l'intervention
-* Etat de l'intervention (Open, Close)
+* Etat de l'intervention (Open, Close ou Pending)
 
 <a name="choix-developpementn"></a>
 # Choix du développpement
@@ -57,14 +59,15 @@ Tables nécessaires :
 * Pour les devices (id, description:string, type_equipement:reference)
 * Pour les types d'intervention (id, description:string)
 * Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, state:boolean)
+* Pour les états des interventions (id, description:string)
 
 <a name="ressources-externes"></a>
 # Ressources externes
-*Bootstrap v5.0 (par CDN) 
-*GEM Bcrypt pour l'encryption des mots de passe
-*Flash messages : https://www.rubyguides.com/2019/11/rails-flash-messages/
-*Simple_Form :https://github.com/heartcombo/simple_form
-*Pagy V3.11 pour la pagination : https://github.com/ddnexus/pagy
+* Bootstrap v5.0 (par CDN) 
+* GEM Bcrypt pour l'encryption des mots de passe
+* Flash messages : https://www.rubyguides.com/2019/11/rails-flash-messages/
+* Simple_Form :https://github.com/heartcombo/simple_form
+* Pagy V3.11 pour la pagination : https://github.com/ddnexus/pagy
 
 
 <a name="remarques-projet"></a>

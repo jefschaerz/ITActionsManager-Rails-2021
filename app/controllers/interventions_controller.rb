@@ -8,7 +8,7 @@ class InterventionsController < ApplicationController
   def index
     # Load also other informaion in order to be able to display info in the list (and not only id) 
     # Use pagy
-    @pagy, @interventions = pagy(apply_scopes(Intervention.includes(:device, :intervention_type, :user)),items:10)
+    @pagy, @interventions = pagy(apply_scopes(Intervention.includes(:device, :intervention_type, :user, :intervention_state)),items:10)
   end
 
   # GET /interventions/1 or /interventions/1.json
@@ -32,8 +32,8 @@ class InterventionsController < ApplicationController
     #Add user value (connected)
     @intervention.user_id = current_user.id
 
-    #Add state info (open or closed)
-    @intervention.state = 1
+    #Add state info (open)
+    @intervention.state_id = 1
     puts 'Interventions :', @intervention.inspect
     
     respond_to do |format|

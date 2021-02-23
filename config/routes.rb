@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  
   root 'interventions#index'
   
   post "/signin", to: "sessions#create", as: "signin"
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: :destroy_session
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # TODO : REmove unsused routes (Show)..
   resources :users
   resources :intervention_types
   resources :equipment_types
@@ -20,5 +22,6 @@ Rails.application.routes.draw do
   resources :resources
   resources :interventions
   resources :devices
+  resources :intervention_states
   
 end
