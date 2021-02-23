@@ -4,7 +4,8 @@ class InterventionsController < ApplicationController
   # GET /interventions or /interventions.json
   def index
     # Load also other informaion in order to be able to display info in the list (and not only id) 
-    @interventions = Intervention.includes(:device, :intervention_type, :user)
+    # Use pagy
+    @pagy, @interventions = pagy(Intervention.includes(:device, :intervention_type, :user),items:10)
   end
 
   # GET /interventions/1 or /interventions/1.json

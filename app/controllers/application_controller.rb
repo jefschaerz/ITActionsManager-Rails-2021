@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    include Pagy::Backend
 
     # By default user must be signed in to do something
     before_action :only_signed_in

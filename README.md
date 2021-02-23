@@ -61,9 +61,10 @@ Tables nécessaires :
 <a name="ressources-externes"></a>
 # Ressources externes
 *Bootstrap v5.0 (par CDN) 
-*GEM Bcrypt pour password
+*GEM Bcrypt pour l'encryption des mots de passe
 *Flash messages : https://www.rubyguides.com/2019/11/rails-flash-messages/
 *Simple_Form :https://github.com/heartcombo/simple_form
+*Pagy V3.11 pour la pagination : https://github.com/ddnexus/pagy
 
 
 <a name="remarques-projet"></a>
