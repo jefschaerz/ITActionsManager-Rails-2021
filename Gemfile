@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 #Added by JFS
 gem 'simple_form'
 gem 'pagy', '~> 3.5'
+gem 'has_scope'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
