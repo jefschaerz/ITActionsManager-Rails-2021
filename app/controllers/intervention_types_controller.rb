@@ -25,7 +25,7 @@ class InterventionTypesController < ApplicationController
 
     respond_to do |format|
       if @intervention_type.save
-        format.html { redirect_to @intervention_type, notice: "Intervention type was successfully created." }
+        format.html { redirect_to intervention_types_url, notice: "Intervention type was successfully created." }
         format.json { render :show, status: :created, location: @intervention_type }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class InterventionTypesController < ApplicationController
   def update
     respond_to do |format|
       if @intervention_type.update(intervention_type_params)
-        format.html { redirect_to @intervention_type, notice: "Intervention type was successfully updated." }
+        format.html { redirect_to intervention_types_url, notice: "Intervention type was successfully updated." }
         format.json { render :show, status: :ok, location: @intervention_type }
       else
         format.html { render :edit, status: :unprocessable_entity }

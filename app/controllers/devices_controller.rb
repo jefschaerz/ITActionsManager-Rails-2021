@@ -27,7 +27,7 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       if @device.save
-        format.html { redirect_to @device, notice: "Device was successfully created." }
+        format.html { redirect_to devices_url, notice: "Device was successfully created." }
         format.json { render :show, status: :created, location: @device }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class DevicesController < ApplicationController
     puts '** We are in UPDATE...'
     respond_to do |format|
       if @device.update(device_params)
-        format.html { redirect_to @device, notice: "Device was successfully updated." }
+        format.html { redirect_to devices_url, notice: "Device was successfully updated." }
         format.json { render :show, status: :ok, location: @device }
       else
         format.html { render :edit, status: :unprocessable_entity }

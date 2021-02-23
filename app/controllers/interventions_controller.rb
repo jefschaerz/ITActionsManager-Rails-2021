@@ -27,13 +27,14 @@ class InterventionsController < ApplicationController
 
     #Add user value (connected)
     @intervention.user_id = current_user.id
+
     #Add state info (open or closed)
     @intervention.state = 1
     puts 'Interventions :', @intervention.inspect
     
     respond_to do |format|
       if @intervention.save
-        format.html { redirect_to @intervention, notice: "Intervention was successfully created." }
+        format.html { redirect_to interventions_url, notice: "Intervention was successfully created." }
         format.json { render :show, status: :created, location: @intervention }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -46,7 +47,7 @@ class InterventionsController < ApplicationController
   def update
     respond_to do |format|
       if @intervention.update(intervention_params)
-        format.html { redirect_to @intervention, notice: "Intervention was successfully updated." }
+        format.html { redirect_to interventions_url, notice: "Intervention was successfully updated." }
         format.json { render :show, status: :ok, location: @intervention }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -16,9 +16,10 @@
       <tr>
         <td><%= equipment_type.id %></td>
         <td><%= equipment_type.description %></td>
-        <td><%= link_to 'Show', equipment_type %></td>
+        <% if isAdmin? %>
         <td><%= link_to 'Edit', edit_equipment_type_path(equipment_type) %></td>
         <td><%= link_to 'Destroy', equipment_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
