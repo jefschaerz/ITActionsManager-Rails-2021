@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     if @user and @user.authenticate(user_param[:password])
     # Add info in session cookie
       session[:auth] = @user.to_session
-      redirect_to users_path, success: "Connexion réussie"
+      redirect_to interventions_path, success: "Connexion réussie"
     else
       redirect_to new_session_path, danger: 'Mauvais identifiant ou mot de passe'    
     end

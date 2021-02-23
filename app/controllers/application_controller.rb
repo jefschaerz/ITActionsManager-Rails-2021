@@ -1,27 +1,28 @@
 class ApplicationController < ActionController::Base
 
+    # By default user must be signed in to do something
     before_action :only_signed_in
     add_flash_types :success, :danger
     
-    #Define Helper
+    # Define Helper
     helper_method :current_user, :user_signed_in?
     
     private
-    # Define is a user is connected using session
+    # Check if user is signed and if not redirect to login
     def only_signed_in
         if !user_signed_in?
             redirect_to new_session_path, danger: "Vous devez être connecté pour cette action !"
         end
     end
 
-    # Define is a user is connected using session
+    # Define is a user is disconnected using session
     def only_signed_out
         if user_signed_in?
             redirect_to profil_path if user_signed_in?
         end
     end
 
-    # Define if a user singed in
+    # Check if a user signed in
     def user_signed_in?
         !current_user.nil?
     end

@@ -3,7 +3,8 @@ class InterventionsController < ApplicationController
 
   # GET /interventions or /interventions.json
   def index
-    @interventions = Intervention.all
+    # Load also other informaion in order to be able to display info in the list (and not only id) 
+    @interventions = Intervention.includes(:device, :intervention_type, :user)
   end
 
   # GET /interventions/1 or /interventions/1.json
@@ -56,10 +57,17 @@ class InterventionsController < ApplicationController
 
   # DELETE /interventions/1 or /interventions/1.json
   def destroy
-    @intervention.destroy
-    respond_to do |format|
-      format.html { redirect_to interventions_url, notice: "Intervention was successfully destroyed." }
-      format.json { head :no_content }
+    # Use helpers in controller, but not recommended
+    if helpers.isAdmin?
+        @intervention.destroy
+        respond_to do |format|
+        format.html { redirect_to interventions_url, notice: "Intervention was successfully destroyed." }
+        format.json { head :no_content }
+        end
+    else
+        respond_to do |format|
+        format.html { redirect_to interventions_url, danger: "You have not the permission to do this action." }
+        end
     end
   end
 

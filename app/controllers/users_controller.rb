@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  # Allow action also if not connected :
-  skip_before_action :only_signed_in, only: [:new, :create, :index]
-  before_action :only_signed_out, only: [:new, :create, :confirm]
+  # Allow action ALSO if not connected :
+  skip_before_action :only_signed_in, only: [:new, :create]
+  # Allow action ONLY if not connected :
+  before_action :only_signed_out, only: [:new, :create]
 
   # GET /users or /users.json
   def index
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-
   # GET /profil
   def profil
     # Availble for the current_user profil
@@ -28,9 +28,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     # Allow to edit users by admin only
-    # TODO : why isAdmin? not recognized here !
-    # Change depending on isAdmin or not
-    if current_user.role ==='admin'
+    if helpers.isAdmin? 
       @user = User.find_by_id(params[:id]) 
     else 
       @user = current_user

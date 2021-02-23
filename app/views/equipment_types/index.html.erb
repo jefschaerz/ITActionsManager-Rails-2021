@@ -14,7 +14,7 @@
   <tbody>
     <% @equipment_types.each do |equipment_type| %>
       <tr>
-      <td><%= equipment_type.id %></td>
+        <td><%= equipment_type.id %></td>
         <td><%= equipment_type.description %></td>
         <td><%= link_to 'Show', equipment_type %></td>
         <td><%= link_to 'Edit', edit_equipment_type_path(equipment_type) %></td>

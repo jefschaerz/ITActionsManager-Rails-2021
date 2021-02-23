@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-    
  
-  root 'users#index'
+  root 'interventions#index'
   
   post "/signin", to: "sessions#create", as: "signin"
 
