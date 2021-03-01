@@ -58,7 +58,7 @@ Tables nécessaires :
 * Pour les types d'équipement (id, description:string)
 * Pour les devices (id, description:string, type_equipement:reference)
 * Pour les types d'intervention (id, description:string)
-* Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, state:boolean)
+* Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, intervention_state:id)
 * Pour les états des interventions (id, description:string)
 
 <a name="ressources-externes"></a>

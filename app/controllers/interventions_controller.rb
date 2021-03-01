@@ -18,6 +18,8 @@ class InterventionsController < ApplicationController
   # GET /interventions/new
   def new
     @intervention = Intervention.new
+    # Create list of state to use in view
+    @statustypes = InterventionState.select(:id, :description).distinct
   end
 
   # GET /interventions/1/edit
@@ -33,7 +35,7 @@ class InterventionsController < ApplicationController
     @intervention.user_id = current_user.id
 
     #Add state info (open)
-    @intervention.state_id = 1
+    ##@intervention.intervention_state_id = 1
     puts 'Interventions :', @intervention.inspect
     
     respond_to do |format|
@@ -84,6 +86,6 @@ class InterventionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.require(:intervention).permit(:date, :summary, :details, :state, :device_id, :intervention_type_id, :user_id)
+      params.require(:intervention).permit(:date, :summary, :details, :state, :device_id, :intervention_type_id, :intervention_state_id, :user_id)
     end
 end

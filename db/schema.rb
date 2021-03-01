@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_203820) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "device_id", null: false
-    t.integer "state_id", default: 1
     t.index ["device_id"], name: "index_interventions_on_device_id"
     t.index ["intervention_type_id"], name: "index_interventions_on_intervention_type_id"
     t.index ["user_id"], name: "index_interventions_on_user_id"

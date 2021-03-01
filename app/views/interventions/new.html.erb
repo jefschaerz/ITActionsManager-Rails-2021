@@ -37,13 +37,16 @@
 
     <div class="mb-3 col-md-6">
         <!-- Use simple_form association to get device description in field but save the id -->
-        <!--%= f.input :state, collection: {Open: :1, Close: :0} %-->
+        <%= f.association :intervention_state, collection: InterventionState.pluck(:description, :id), prompt: "Select the status type" %>
+        <!--%= f.association :intervention_state, description.all, as: :radio_buttons %-->
     </div>
 
     <div class="mb-3 col-md-6">
         <%= f.button :submit, 'Create' %>
         <!-- Or modify -->
     </div>
+    <p>StatusState : <%= debug @statustypes.inspect %> </p>
+
 
     <%end %>
 </div>
