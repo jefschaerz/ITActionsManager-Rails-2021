@@ -1,3 +1,3 @@
 class InterventionType < ApplicationRecord
-  has_many :intervention
+  has_many :interventions
 end
