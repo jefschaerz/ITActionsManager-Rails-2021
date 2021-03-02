@@ -73,3 +73,6 @@ Tables nécessaires :
 <a name="remarques-projet"></a>
 # Remarques sur le projet
 * Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
+
+Il y a un nombre impressionant de GEM a disposition pour faciliter l'utilisation des form, filtres, etc.
+Difficile de savoir lequel utiliser sans avoir un peu joué avec et testé les fonctionnalités.
