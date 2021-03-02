@@ -7,15 +7,11 @@
 
 <%= form_tag interventions_path, method: :get do %>
   <div class="form-group">
-    <%= label_tag :search, "Search in Details" %>
-    <%= text_field_tag :search, params[:search], class: 'form-control' %>
+    <%= label_tag :search_query, "Search in Details and Summary" %>
+    <%= text_field_tag :search_query, params[:search_query], class: 'form-control' %>
   </div>
-  <!--div class="form-group row">
-    <div class="col-6">
-      <%= label_tag :search_by_device %>
-      <%= text_field_tag :search_by_device, params[:device], class: 'form-control' %>
-    </div>
-  </div-->
+
+
   <div class="form-group mt-2">
     <%= submit_tag 'Search', class: 'btn btn-primary' %>
     <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %>
@@ -25,12 +21,13 @@
 <table class="table table-striped mt-2">
   <thead>
     <tr>
-      <th>Date</th>
+      <th><%= link_to "Status", interventions_path(sorted_by: "intervention_state") %></th>
+      <!-- Add sorted by -->
+      <th><%= link_to "Device", interventions_path(sorted_by: "device") %></th>
       <th>Summary</th>
       <th>Details</th>
-      <th>Status</th>
-      <th>Device</th>
-      <th>Intervention type</th>
+      <th><%= link_to "Intervention type", interventions_path(sorted_by: "intervention_type") %></th>
+      <th>Date</th>
       <th>User</th>
       <th colspan="3"></th>
     </tr>
@@ -38,13 +35,15 @@
 
   <tbody>
     <% @interventions.each do |intervention| %>
-      <tr>
-        <td><%= intervention.date %></td>
-        <td><%= intervention.summary %></td>
-        <td><%= intervention.details %></td>
+        <!-- TODO : Try to make whole line clickeable insate of button -->
+        <!--%= link_to edit_intervention_path(intervention) do %-->
+        <tr>
         <td><%= intervention.intervention_state.description %></td>
         <td><%= intervention.device.description %></td>
+        <td><%= intervention.summary %></td>
+        <td><%= intervention.details %></td>      
         <td><%= intervention.intervention_type.description %></td>
+        <td><%= intervention.date %></td>
         <td><%= intervention.user.username %></td>
         <!--Only if users's intervention -->
         <% if isUserConnectedIntervention?(intervention) or isAdmin? %>
@@ -55,6 +54,7 @@
         <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
       </tr>
+      
     <% end %>
   </tbody>
 </table>
