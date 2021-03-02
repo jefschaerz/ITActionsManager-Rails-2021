@@ -2,15 +2,16 @@ class InterventionsController < ApplicationController
   before_action :set_intervention, only: %i[ show edit update destroy ]
   # To filter
   has_scope :search
-  #has_scope :search_in_device
   has_scope :search_query
   has_scope :sorted_by
 
   # GET /interventions or /interventions.json
   def index
+
     # Load also other informaion in order to be able to display info in the list (and not only id) 
     # Use pagy
     puts "In index..."
+  
     @pagy, @interventions = pagy(apply_scopes(Intervention.includes(:device, :intervention_type, :user, :intervention_state)),items:10)
   end
 

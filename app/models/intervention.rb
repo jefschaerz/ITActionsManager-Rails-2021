@@ -1,4 +1,6 @@
 class Intervention < ApplicationRecord
+
+  # ActiveRecord association declarations
   belongs_to :device
   belongs_to :intervention_type
   belongs_to :user
@@ -8,7 +10,7 @@ class Intervention < ApplicationRecord
   scope :search, ->(query) {where('details like ?', "%#{query}%") }
   
   scope :search_query, ->(query) {
-  puts "In search_query..."
+  puts "*** In search_query..."
   # Searches in intervention table in the 'summary' and 'details' columns.
   # Matches using LIKE, automatically prefixes and appends '%' to each term.
   # LIKE is case INsensitive with MySQL, however it is case
@@ -38,14 +40,13 @@ class Intervention < ApplicationRecord
 ## General sorted_by scope function
 scope :sorted_by, ->(sort_option) {
   # extract the sort direction from the param value.
-  puts "In sorted_by..."
+  puts "***In sorted_by... with #{sort_option}"
   direction = /desc$/.match?(sort_option) ? "desc" : "asc"
   case sort_option.to_s
+  when /^created_at_/
+    order("interventions.created_at #{direction}")
   when /^intervention_type/
-    # Simple sort on the created_at column.
     # Make sure to include the table name to avoid ambiguous column names.
-    # Joining on other tables is quite common in Filterrific, and almost
-    # every ActiveRecord table has a 'created_at' column.
    order("LOWER(interventions.intervention_type_id) #{direction}").includes(:intervention_type).references(:intervention_type)
   when /^device/
     # Simple sort on the name colums
@@ -57,4 +58,5 @@ scope :sorted_by, ->(sort_option) {
     raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
   end
 }
+
 end
