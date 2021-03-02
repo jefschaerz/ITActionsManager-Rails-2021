@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Intervention States</h1>
+<h1>Intervention states</h1>
+
+<p>
+<% if isAdmin?%>
+  <%= link_to 'New Intervention State', new_intervention_state_path, :class => "btn btn-outline-success"  %>
+<%end%>
+</p>
 
 <table class="table table-striped">
   <thead>
@@ -25,6 +31,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= button_to 'New Intervention State', new_intervention_state_path, :class => "btn btn-outline-success"  %>

@@ -1,36 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Devices</h1>
+<p>
+    <% if isAdmin? %>
+    <%= button_to 'New Device', new_device_path, :class => "btn btn-outline-success" %>
+    <%end%>
+</p>
 
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Description</th>
-      <th>Equipment type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Equipment type</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @devices.each do |device| %>
-      <tr>
-        <td><%= device.id %></td>
-        <td><%= device.description %></td>
-        <!-- Display directly description in state of id -->
-        <td><%= device.equipment_type.description %></td>
-        <% if isAdmin? %>
-        <td><%= link_to 'Edit', edit_device_path(device) %></td>
-        <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <tbody>
+        <% @devices.each do |device| %>
+        <tr>
+            <td><%= device.id %></td>
+            <td><%= device.description %></td>
+            <!-- Display directly description in state of id -->
+            <td><%= device.equipment_type.description %></td>
+            <% if isAdmin? %>
+            <td><%= link_to 'Edit', edit_device_path(device) %></td>
+            <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+        </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
+    </tbody>
 </table>
 <%= pagy_bootstrap_nav(@pagy).html_safe%>
-
-<p>Devices : <%= debug @devices.inspect %> </p>
-
-<br>
-
-<%= button_to 'New Device', new_device_path, :class => "btn btn-outline-success" %>
+<!-- Debug -->
+<!--p>Devices : <%= debug @devices.inspect %> </p-->

@@ -5,36 +5,4 @@
 <%= link_to 'Show', @intervention_type %> |
 <%= link_to 'Back', intervention_types_path %>
 
-<p id="notice"><%= notice %></p>
-
-<h1>Equipment Types</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @equipment_types.each do |equipment_type| %>
-      <tr>
-        <td><%= equipment_type.id %></td>
-        <td><%= equipment_type.description %></td>
-        <% if isAdmin? %>
-        <td><%= link_to 'Edit', edit_equipment_type_path(equipment_type) %></td>
-        <td><%= link_to 'Destroy', equipment_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<p> Equipment_types : <%= debug @equipment_types.inspect %> </p>
-
-<br>
-
-<%= link_to 'New Equipment Type', new_equipment_type_path %>
 

@@ -1,6 +1,28 @@
-<h1>Editing Intervention</h1>
+<!-- Manage errors -->
+<% if @intervention.errors.any? %>
+<div class="alert alert-danger">
+    <ul>
+        <% @intervention.errors.full_messages.each do |message| %>
+        <li> <%= message %></li>
+        <%end%>
+    </ul>
+</div>
+<%end%>
 
-<%= render 'form', intervention: @intervention %>
+<div class="form mt-3">
+    <h3>Editing Intervention</h3>
+    <!--p>intervention.pesisited :' <%= debug @intervention.persisted? %></p-->
 
-<%= link_to 'Show', @intervention %> |
-<%= link_to 'Back', interventions_path %>
+    <%= simple_form_for @intervention, as: :intervention, url: intervention_path(@intervention), method: :patch, html: {class: 'form-horizontal'} do |f| %>
+
+    <!-- User partial for editable parts to avoid coding twice same part -->
+    <%= render :partial => 'partialedit', :locals => { :f => f } %>
+ 
+    <div class="mb-3">
+        <div class="mb-3 col-md-6">
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        </div>
+    </div>
+    <%end %>
+   
+</div>

@@ -11,42 +11,19 @@
 
 <div class="form mt-3">
     <h3>Add a new intervention</h3>
+
     <%= simple_form_for @intervention do |f| %>
 
-    <div class="mb-3 col-md-6">
-        <%= f.input :date %>
-    </div>
+    <!-- Fields only editable in new -->
 
+    <!-- User partial for editable field in both (new and edit) to avoid coding twice same part -->
+    <%= render :partial => 'partialedit', :locals => { :f => f } %>  
+    
     <div class="mb-3 col-md-6">
-        <!-- Use simple_form association to get equipment_type description in field but save the id -->
-        <%= f.association :intervention_type, collection: InterventionType.pluck(:description, :id), prompt: "Select the intervention type" %>
-    </div>
-
-    <div class="mb-3 col-md-6">
-        <!-- Use simple_form association to get device description in field but save the id -->
-        <%= f.association :device, collection: Device.pluck(:description, :id), prompt: "Select the device" %>
-    </div>
-
-    <div class="mb-3 col-md-6">
-        <%=f.input :summary %>
-    </div>
-
-    <div class="mb-3 col-md-6">
-        <%=f.input :details %>
-    </div>
-
-    <div class="mb-3 col-md-6">
-        <!-- Use simple_form association to get device description in field but save the id -->
-        <%= f.association :intervention_state, collection: InterventionState.pluck(:description, :id), prompt: "Select the status type" %>
-        <!--%= f.association :intervention_state, description.all, as: :radio_buttons %-->
-    </div>
-
-    <div class="mb-3 col-md-6">
-        <%= f.button :submit, 'Create' %>
+        <%= f.button :submit, 'Create', :class => "btn btn-outline-success" %>
         <!-- Or modify -->
     </div>
-    <p>StatusState : <%= debug @statustypes.inspect %> </p>
-
-
+    <!-- For debug -->
+    <!--p>StatusState : <%= debug @statustypes.inspect %> </p-->
     <%end %>
 </div>
