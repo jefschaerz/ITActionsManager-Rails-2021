@@ -25,7 +25,7 @@ class InterventionStatesController < ApplicationController
 
     respond_to do |format|
       if @intervention_state.save
-        format.html { redirect_to @intervention_state, notice: "Intervention state was successfully created." }
+        format.html { redirect_to intervention_states_url, notice: "Intervention state was successfully created." }
         format.json { render :show, status: :created, location: @intervention_state }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class InterventionStatesController < ApplicationController
   def update
     respond_to do |format|
       if @intervention_state.update(intervention_state_params)
-        format.html { redirect_to @intervention_state, notice: "Intervention state was successfully updated." }
+        format.html { redirect_to intervention_states_url, notice: "Intervention state was successfully updated." }
         format.json { render :show, status: :ok, location: @intervention_state }
       else
         format.html { render :edit, status: :unprocessable_entity }

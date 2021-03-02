@@ -1,5 +1,21 @@
-<h1>New Equipment Type</h1>
+<!-- Manage errors -->
+<% if @equipment_type.errors.any? %>
+<div class="alert alert-danger">
+    <ul>
+        <% @equipment_type.errors.full_messages.each do |message| %>
+        <li> <%= message %></li>
+        <%end%>
+    </ul>
+</div>
+<%end%>
 
-<%= render 'form', equipment_type: @equipment_type %>
+<div class="form mt-3">
+    <h3>Add a new equipment type</h3>
+    
+    <%= simple_form_for @equipment_type do |f| %>
 
-<%= link_to 'Back', equipment_types_path, :class => "btn btn-outline-success" %>
+    <!-- User partial for editable field in both (new and edit) to avoid coding twice same part -->
+    <%= render :partial => "form", :locals => { :f => f } %>
+
+    <%end %>
+</div>

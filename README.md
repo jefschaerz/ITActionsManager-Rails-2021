@@ -73,6 +73,12 @@ Tables nécessaires :
 <a name="remarques-projet"></a>
 # Remarques sur le projet
 * Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
+* L'utilisation des partials pourrait cer
 
 Il y a un nombre impressionant de GEM a disposition pour faciliter l'utilisation des form, filtres, etc.
 Difficile de savoir lequel utiliser sans avoir un peu joué avec et testé les fonctionnalités.
+
+<a name="Améliorations possibles"></a>
+# Beaucoup...
+* Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
+* L'utilisation des partials pour diminuer la duplication de code dasns les vues pour les New ou Edit

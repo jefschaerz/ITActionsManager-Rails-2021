@@ -1,8 +1,23 @@
-<h1>Editing Intervention Type</h1>
 
-<%= render 'form', intervention_type: @intervention_type %>
+<!-- Manage errors -->
+<% if @intervention_type.errors.any? %>
+<div class="alert alert-danger">
+    <ul>
+        <% @intervention_type.errors.full_messages.each do |message| %>
+        <li> <%= message %></li>
+        <%end%>
+    </ul>
+</div>
+<%end%>
 
-<%= link_to 'Show', @intervention_type %> |
-<%= link_to 'Back', intervention_types_path %>
+<div class="form mt-3">
+    <h3>Edit an intervention state</h3>
+
+    <%= simple_form_for @intervention_type, as: :intervention_type, url: intervention_type_path(@intervention_type), method: :patch, html: {class: 'form-horizontal'} do |f| %>
+    <!-- User partial for editable field in both (new and edit) to avoid coding twice same part -->
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <%end %>
+</div>
 
 
