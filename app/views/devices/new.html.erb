@@ -12,24 +12,8 @@
 <div class="form mt-3">
     <h3>Add a new device</h3>
     <%= simple_form_for @device do |f| %>
-    <div class="mb-3">
-        <%= f.label :description, "Description", class: 'form-label' %>
-        <div class="mb-3 col-md-6">
-            <%= f.text_field :description, class: 'form-control' %>
-        </div>
-    </div>
-
-    <div class="mb-3 col-md-6">
-    <!-- Use simple_form association to get equipment_type description in field but save the id -->
-      <%= f.association :equipment_type, collection: EquipmentType.pluck(:description, :id), prompt: "Select the equipment type" %>  
-    </div>
-
-   <div class="mb-3">
-        <div class="mb-3 col-md-6">
-            <button type="submit" class="btn btn-primary">Add</button>
-        </div>
-    </div>
-
+    <!-- User partial for editable field in both (new and edit) to avoid coding twice same part -->
+    <%= render :partial => "form", :locals => { :f => f } %>
     <%end %>
 </div>
 

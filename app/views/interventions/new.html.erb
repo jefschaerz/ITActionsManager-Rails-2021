@@ -11,19 +11,10 @@
 
 <div class="form mt-3">
     <h3>Add a new intervention</h3>
-
     <%= simple_form_for @intervention do |f| %>
-
     <!-- Fields only editable in new -->
-
     <!-- User partial for editable field in both (new and edit) to avoid coding twice same part -->
-    <%= render :partial => 'partialedit', :locals => { :f => f } %>  
-    
-    <div class="mb-3 col-md-6">
-        <%= f.button :submit, 'Create', :class => "btn btn-outline-success" %>
-        <!-- Or modify -->
-    </div>
-    <!-- For debug -->
+    <%= render :partial => 'form', :locals => { :f => f } %>  
     <!--p>StatusState : <%= debug @statustypes.inspect %> </p-->
     <%end %>
 </div>

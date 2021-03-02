@@ -11,10 +11,8 @@
 
 <div class="form mt-3">
     <h3>Add a new intervention type</h3>
-
     <%= simple_form_for @intervention_type do |f| %>
     <!-- User partial for editable field in both (new and edit) to avoid coding twice same part -->
      <%= render :partial => "form", :locals => { :f => f } %>
-
     <%end %>
 </div>

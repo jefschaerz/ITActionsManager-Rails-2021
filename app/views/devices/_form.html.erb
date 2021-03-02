@@ -1,27 +1,17 @@
-<%= form_with(model: device) do |form| %>
-  <% if device.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(device.errors.count, "error") %> prohibited this device from being saved:</h2>
+<!-- Common part for edit and new -->
+<%= simple_form_for(@device) do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-      <ul>
-        <% device.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="mb-3">
+    <div class="form-inputs mb-3 col-md-6">
+        <%= f.input :description %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :equipment_type_id %>
-    <%= form.text_field :equipment_type_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="mb-3 col-md-6">
+        <!-- Use simple_form association to get equipment_type description in field but save the id -->
+        <%= f.association :equipment_type, collection: EquipmentType.pluck(:description, :id), prompt: "Select the equipment type" %>
+    </div>
+    <div class="form-actions mb-3 col-md-6">
+        <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+    <% end %>

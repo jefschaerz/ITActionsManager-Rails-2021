@@ -11,11 +11,9 @@
 
 <div class="form mt-3">
     <h3>Edit an equipment type</h3>
-
     <%= simple_form_for @equipment_type, as: :equipment_type, url: equipment_type_path(@equipment_type), method: :patch, html: {class: 'form-horizontal'} do |f| %>
     <!-- User partial for editable field in both (new and edit) to avoid coding twice same part -->
     <%= render :partial => 'form', :locals => { :f => f } %>
-
     <%end %>
 </div>
 

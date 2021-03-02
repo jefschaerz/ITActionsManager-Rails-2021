@@ -1,52 +1,38 @@
-<%= form_with(model: intervention) do |form| %>
-  <% if intervention.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+<%= simple_form_for(@intervention) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-      <ul>
-        <% intervention.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<!-- Partial part for editable values -->
+<div class="mb-3 col-md-6">
+    <%= f.input :date %>
+</div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
+<div class="mb-3 col-md-6">
+    <!-- Use simple_form association to get equipment_type description in field but save the id -->
+    <%= f.association :intervention_type, collection: InterventionType.pluck(:description, :id), prompt: "Select the intervention type" %>
+</div>
 
-  <div class="field">
-    <%= form.label :summary %>
-    <%= form.text_field :summary %>
-  </div>
+<div class="mb-3 col-md-6">
+    <!-- Use simple_form association to get device description in field but save the id -->
+    <%= f.association :device, collection: Device.pluck(:description, :id), prompt: "Select the device" %>
+</div>
 
-  <div class="field">
-    <%= form.label :details %>
-    <%= form.text_area :details %>
-  </div>
+<div class="mb-3 col-md-6">
+    <%=f.input :summary %>
+</div>
 
-  <div class="field">
-    <%= form.label :intervention_state_id %>
-    <%= form.text_field :intervention_state_id %>
-  </div>
+<div class="mb-3 col-md-6">
+    <%=f.input :details %>
+</div>
 
-  <div class="field">
-    <%= form.label :device_id %>
-    <%= form.text_field :device_id %>
-  </div>
+<div class="mb-3 col-md-6">
+    <!-- Use simple_form association to get device description in field but save the id -->
+    <%= f.association :intervention_state, collection: InterventionState.pluck(:description, :id), prompt: "Select the status type" %>
+    <!-- Todo as radio buttons ?-->
+    <!--%= f.association :intervention_state, collection: InterventionState.pluck(:description, :id), prompt: "Select the status type", as: :radio_buttons  %-->   
+</div>
 
-  <div class="field">
-    <%= form.label :intervention_type_id %>
-    <%= form.text_field :intervention_type_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions mb-3 col-md-6">
+    <%= f.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>

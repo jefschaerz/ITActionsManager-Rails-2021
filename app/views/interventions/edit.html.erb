@@ -10,19 +10,9 @@
 <%end%>
 
 <div class="form mt-3">
-    <h3>Editing Intervention</h3>
-    <!--p>intervention.pesisited :' <%= debug @intervention.persisted? %></p-->
-
+    <h3>Editing an intervention</h3>   
     <%= simple_form_for @intervention, as: :intervention, url: intervention_path(@intervention), method: :patch, html: {class: 'form-horizontal'} do |f| %>
-
     <!-- User partial for editable parts to avoid coding twice same part -->
-    <%= render :partial => 'partialedit', :locals => { :f => f } %>
- 
-    <div class="mb-3">
-        <div class="mb-3 col-md-6">
-            <button type="submit" class="btn btn-primary">Mettre à jour</button>
-        </div>
-    </div>
-    <%end %>
-   
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%end %>  
 </div>
