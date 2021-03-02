@@ -7,7 +7,6 @@ class InterventionsController < ApplicationController
 
   # GET /interventions or /interventions.json
   def index
-
     # Load also other informaion in order to be able to display info in the list (and not only id) 
     # Use pagy
     puts "In index..."
