@@ -8,6 +8,7 @@ class Intervention < ApplicationRecord
   
   # Search by the param in the query
   scope :search, ->(query) {where('details like ?', "%#{query}%") }
+  scope :search_by_device, ->(query) {where('device_id like ?', "%#{query}%") }
   
   scope :search_query, ->(query) {
   puts "*** In search_query..."
@@ -54,6 +55,9 @@ scope :sorted_by, ->(sort_option) {
   when /^intervention_state/
     # This sorts by a Status 
     order("LOWER(interventions.intervention_state_id) #{direction}").includes(:intervention_state).references(:intervention_state)
+    when /^user/
+    # This sorts by a user 
+    order("LOWER(interventions.user_id) #{direction}").includes(:user).references(:user)
   else
     raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
   end

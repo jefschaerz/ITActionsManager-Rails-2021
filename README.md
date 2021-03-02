@@ -79,6 +79,6 @@ Il y a un nombre impressionant de GEM a disposition pour faciliter l'utilisation
 Difficile de savoir lequel utiliser sans avoir un peu joué avec et testé les fonctionnalités.
 
 <a name="Améliorations possibles"></a>
-# Beaucoup...
+# Améliorations possibles...
 * Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
 * L'utilisation des partials pour diminuer la duplication de code dasns les vues pour les New ou Edit
