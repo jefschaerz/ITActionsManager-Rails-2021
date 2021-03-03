@@ -5,28 +5,50 @@
     <%= link_to 'New Intervention', new_intervention_path, :class => "btn btn-outline-success" %>
 </p>
 
+<div class="container">  
+    <div class="row bg-light">
+        <div class="col-sm-1 form-group">
+        <h5>Search:</h5>
+        </div>
+        <div class="col-sm form-group">  
+        <%= form_tag interventions_path, method: :get do %>            
+            <%= text_field_tag  :search_query, params[:search_query], class: 'form-control' %>
+            <%= submit_tag 'Search', class: 'btn btn-primary' %> <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %></span>
+        <% end %>
+        </div>
+    </div>
+</div>
+
 <%= form_tag interventions_path, method: :get do %>
-  <div class="form-group">
-    <%= label_tag :search_query, "Search in Details and Summary" %>
-    <%= text_field_tag :search_query, params[:search_query], class: 'form-control' %>
-  </div>
+    <div class="container mt-2">  
+        <div class="row bg-light">
+            <div class="col-sm form-group">
+            <h5>Filter by:</h5>
+            </div>
+            <div class="col-sm form-group">
+            <%= label_tag :search_by_status, "Search by status" %>
+            <%= select_tag :search_by_status, options_from_collection_for_select(InterventionState.all, :id, :description, params[:search_by_status]), include_blank: true %>
+            </div>
+            <div class="col-sm form-group">
+            <%= label_tag :search_by_device, "Search by device" %>
+            <%= select_tag :search_by_device, options_from_collection_for_select(Device.all, :id, :description, params[:search_by_device]), include_blank: true %>
+            </div>
+            <div class="col-sm form-group">
+            <%= label_tag :search_by_user, "Search by user" %>
+            <%= select_tag :search_by_user, options_from_collection_for_select(User.all, :id, :username, params[:search_by_user]), include_blank: true %>
+            </div>
+            <div class="col-sm form-group">
+            <%= label_tag :search_by_intervention_type, "Search by intervention type" %>
+            <%= select_tag :search_by_intervention_type, options_from_collection_for_select(InterventionType.all, :id, :description, params[:search_by_intervention_type]), include_blank: true %>
+            </div>
+            <div class="form-group mt-2">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+            <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %>
+            </div>
+        </div>
+    </div>
 
-  <div class="form-group mt-2">
-    <%= submit_tag 'Search', class: 'btn btn-primary' %>
-    <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %>
-  </div>
-<% end %>
-
-<%= form_tag interventions_path, method: :get do %>
-  <div class="form-group">
-    <%= label_tag :search_by_device, "Search by device" %>
-    <%= text_field_tag :search_by_device, params[:search_by_device], class: 'form-control' %>
-  </div>
-
-  <div class="form-group mt-2">
-    <%= submit_tag 'Search', class: 'btn btn-primary' %>
-    <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %>
-  </div>
+   
 <% end %>
 
 <table class="table table-striped mt-2">

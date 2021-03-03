@@ -4,6 +4,9 @@ class InterventionsController < ApplicationController
   has_scope :search
   has_scope :search_query
   has_scope :search_by_device
+  has_scope :search_by_user
+  has_scope :search_by_intervention_type
+  has_scope :search_by_status
   has_scope :sorted_by
 
   # GET /interventions or /interventions.json
