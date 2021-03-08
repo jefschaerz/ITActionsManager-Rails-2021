@@ -24,7 +24,7 @@
         <td><%= intervention_state.description %></td>
         <% if isAdmin? %>
         <td><%= link_to 'Edit', edit_intervention_state_path(intervention_state) %></td>
-        <td><%= link_to 'Destroy', intervention_state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- Not managed (On Delete CASACADE) <td><%= link_to 'Destroy', intervention_state, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
         <%end%>
       </tr>
     <% end %>

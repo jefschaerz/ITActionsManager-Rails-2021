@@ -80,5 +80,7 @@ Difficile de savoir lequel utiliser sans avoir un peu joué avec et testé les f
 
 <a name="Améliorations possibles"></a>
 # Améliorations possibles...
+* Validation approfondie des champs saisis 
 * Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
-* L'utilisation des partials pour diminuer la duplication de code dasns les vues pour les New ou Edit
+* L'utilisation des partials pour diminuer la duplication de code dans les vues pour les New ou Edit
+* Actionvation de la suppression d'un User ou Intervention type, mais gestion des dépendances lors d'effacement par modificaton des foreign key en "On Delete Cascade" (et pas en On Delete Restrict par défaut)

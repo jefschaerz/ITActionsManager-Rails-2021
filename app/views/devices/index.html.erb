@@ -26,7 +26,7 @@
             <td><%= device.equipment_type.description %></td>
             <% if isAdmin? %>
             <td><%= link_to 'Edit', edit_device_path(device) %></td>
-            <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <!-- Not managed (On Delete CASACADE) <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
             <% end %>
         </tr>
         <% end %>
