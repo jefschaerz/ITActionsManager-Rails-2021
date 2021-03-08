@@ -14,11 +14,10 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # DONE : Remove unused routes (Show)..
-  resources :users, :except  => [:show]
+  resources :users
   resources :intervention_types, :except  => [:show]
   resources :equipment_types, :except  => [:show]
   resources :interventions 
-  resources :resources
   resources :devices, :except  => [:show]
   resources :intervention_states, :except  => [:show]
   
