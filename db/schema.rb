@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_203820) do
+ActiveRecord::Schema.define(version: 2021_03_09_133926) do
 
   create_table "devices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "description"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_203820) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "device_id", null: false
     t.bigint "intervention_state_id", null: false
+    t.bigint "device_id", null: false
     t.index ["device_id"], name: "index_interventions_on_device_id"
     t.index ["intervention_state_id"], name: "index_interventions_on_intervention_state_id"
     t.index ["intervention_type_id"], name: "index_interventions_on_intervention_type_id"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_203820) do
   end
 
   add_foreign_key "devices", "equipment_types"
+  add_foreign_key "interventions", "devices"
+  add_foreign_key "interventions", "intervention_states"
   add_foreign_key "interventions", "intervention_types"
   add_foreign_key "interventions", "users"
   add_foreign_key "resources", "equipment_types"

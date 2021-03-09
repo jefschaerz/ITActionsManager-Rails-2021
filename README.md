@@ -35,7 +35,7 @@ L'utilisateur "Contributor" ne peut que :
 
 L'utilisateur "Admin" a, en plus, le droit de  :
 * Créer/modifier ou effacer des types d'équipements, des types d'interventions et des équipements
-* Créer un nouvel utilisateur Contributor ou Admin.
+* Voir la liste des utilisateurs
 
 Lors de la création d'une nouvelle intervention ou équipement, il faut fournir les informations nécessaires.
 
@@ -65,9 +65,13 @@ Tables nécessaires :
 
 <a name="remplir-db"></a>
 # Remplir la base de donnéesdb
-Un fichier seed.rb permet de remplir la base avec une certain nombre de resources.
-Lancer la commande "rails db:setup db:seed"
-Les utilisateurs utilisent le même mot de passe : 1234 avec notamment une utilisateur "Admin".
+Un fichier seed.rb permet de remplir la base avec un certain nombre de resources.
+Lancer la commande "rails db:migrate:reset" pour nettoyer la db actuelle et appliquer les migrations
+Lancer la commande "rails db:seed" pour populer la bd.
+Les utilisateurs utilisent le même mot de passe : 1234 avec notamment un utilisateur :
+* Admin1 (admin)
+* UserA (contributor)
+
 
 <a name="ressources-externes"></a>
 # Ressources externes
