@@ -19,8 +19,9 @@ C'est en fait un journal des actions de suivi sur les équipements.
 
 <a name="utilisation-application"></a>
 # Utilisation de l'application
-L'utilisateur doit d'abord se connecter dans l'application avec son nom d'utilisateur et mot de passe. 
+L'utilisateur doit d'abord se connecter dans l'application avec son nom d'utilisateur et son mot de passe. 
 Pour un nouvel utilisteur, il est nécessaire de s'inscrire en fournissant un username et une adresse e-mail aini qu'un mot de passe.
+Ce nouvel utilisateur ne sera que "Contributor".
 
 Deux types d'utilisateur sont possibles (role) :
 * Admin
@@ -28,8 +29,8 @@ Deux types d'utilisateur sont possibles (role) :
 
 L'utilisateur "Contributor" ne peut que :
 ** Editer son profil
-** Visualiser la liste des équipements, la lisite des types d'intervention 
-** Visualiser, créer et modifier des interventions sur des équipements.
+** Visualiser la liste des équipements, la liste des types d'intervention et la liste des appareils
+** Visualiser, créer et modifier des interventions sur des équipements (modification seulement sur ces propre inteventions).
 
 L'utilisateur "Admin" a, en plus, le droit de  :
 * Créer/modifier ou effacer des types d'équipements, des types d'interventions et des équipements
@@ -73,8 +74,9 @@ Tables nécessaires :
 
 <a name="remarques-projet"></a>
 # Remarques sur le projet
-* Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
-* L'utilisation des partials pourrait cer
+* Les fonctionnalités du frameworok Ruby on rails sont très intéressantes et les scaffold pemettent de développer rapidement une application CRUD.
+* Le mise en place de test System n'a pas fonctionné. Quelques tests au niveau du model ont par contre été mis en place automatiquement par l'utilisation du scaffold,
+mais aussi après coup manuellement pour test quelques possibilités de base.
 
 Il y a un nombre impressionant de GEM a disposition pour faciliter l'utilisation des form, filtres, etc.
 Difficile de savoir lequel utiliser sans avoir un peu joué avec et testé les fonctionnalités.
@@ -84,4 +86,5 @@ Difficile de savoir lequel utiliser sans avoir un peu joué avec et testé les f
 * Validation approfondie des champs saisis 
 * Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
 * L'utilisation des partials pour diminuer la duplication de code dans les vues pour les New ou Edit
-* Actionvation de la suppression d'un User ou Intervention type, mais gestion des dépendances lors d'effacement par modificaton des foreign key en "On Delete Cascade" (et pas en On Delete Restrict par défaut)
+* Activation de la suppression d'un User ou Intervention type, mais gestion des dépendances lors d'effacement par modificaton des foreign key en "On Delete Cascade" (et pas en On Delete Restrict par défaut)
+* Utilisation d'un model pour le role et pas uniquement une string dans le model user.
