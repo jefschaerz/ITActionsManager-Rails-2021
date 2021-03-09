@@ -18,14 +18,14 @@ class SessionsController < ApplicationController
     if @user and @user.authenticate(user_param[:password])
     # Add info in session cookie
       session[:auth] = @user.to_session
-      redirect_to interventions_path, success: "Connexion réussie"
+      redirect_to interventions_path, success: "Connection succeed"
     else
-      redirect_to new_session_path, danger: 'Mauvais identifiant ou mot de passe'    
+      redirect_to new_session_path, danger: 'Bad username or password'    
     end
   end
 
   def destroy
     session.destroy
-    redirect_to new_session_path, success: 'Vous êtes déconnecté correctement'
+    redirect_to new_session_path, success: 'You are successfully connected'
   end
 end

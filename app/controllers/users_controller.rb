@@ -7,7 +7,12 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     # Use pagy for pagination ans SET number per page
-    @pagy, @users = pagy(User.all, items:10)   
+    if helpers.isAdmin? 
+        @pagy, @users = pagy(User.all, items:10)   
+    else
+      # Standard user are allowed to see users
+      redirect_back(fallback_location:"/")
+    end
   end
 
   # GET /users/1 or /users/1.json

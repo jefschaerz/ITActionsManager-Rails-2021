@@ -93,9 +93,10 @@ Il y a un nombre impressionant de GEM a disposition pour faciliter l'utilisation
 Difficile de savoir lequel utiliser sans avoir un peu joué avec et testé les fonctionnalités.
 
 <a name="Améliorations possibles"></a>
-# Améliorations possibles...
+# Améliorations possibles parmi tant...
 * Validation approfondie des champs saisis 
 * Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
 * L'utilisation des partials pour diminuer la duplication de code dans les vues pour les New ou Edit
 * Activation de la suppression d'un User ou Intervention type, mais gestion des dépendances lors d'effacement par modificaton des foreign key en "On Delete Cascade" (et pas en On Delete Restrict par défaut)
 * Utilisation d'un model pour le role et pas uniquement une string dans le model user.
+* Responsive design

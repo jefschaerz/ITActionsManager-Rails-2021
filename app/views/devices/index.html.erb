@@ -1,11 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Devices</h1>
-<p>
-    <% if isAdmin? %>
-    <%= link_to 'New Device', new_device_path, :class => "btn btn-outline-success" %>
-    <%end%>
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+     <h3>Devices</h3>
+    </div>
+    <div class="col">
+      <% if isAdmin? %>
+      <%= link_to 'New Device', new_device_path, :class => "btn btn-outline-success" %>
+      <%end%>
+    </div>
+  </div>
+</div>
 
 <table class="table table-striped">
     <thead>
