@@ -9,6 +9,7 @@ Ce repository contient les sources du projet "ITActionManager" réalisé dans le
 - [Description de l'application](#description-application)
 - [Utilisation de l'application](#utilisation-application)
 - [Choix lors du développpement](#choix-developpement)
+- [Remplir la base de données](#remplir-db)
 - [Ressources externes](#ressources-externes)
 - [Remarques sur le projet](#remarques-projet)
 
@@ -61,6 +62,12 @@ Tables nécessaires :
 * Pour les types d'intervention (id, description:string)
 * Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, intervention_state:id)
 * Pour les états des interventions (id, description:string)
+
+<a name="remplir-db"></a>
+# Remplir la base de donnéesdb
+Un fichier seed.rb permet de remplir la base avec une certain nombre de resources.
+Lancer la commande "rails db:setup db:seed"
+Les utilisateurs utilisent le même mot de passe : 1234 avec notamment une utilisateur "Admin".
 
 <a name="ressources-externes"></a>
 # Ressources externes

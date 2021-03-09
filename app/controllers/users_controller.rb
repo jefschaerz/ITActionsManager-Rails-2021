@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    # Use pagy for pagination
-    @pagy, @users = pagy(User.all, items:4)   
+    # Use pagy for pagination ans SET number per page
+    @pagy, @users = pagy(User.all, items:10)   
   end
 
   # GET /users/1 or /users/1.json
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
       @user = current_user
     end
     puts "Users : ", @user.inspect
-    user_params = params.require(:user).permit(:username, :firstname, :lastname, :email)
+    user_params = params.require(:user).permit(:username, :firstname, :lastname, :email, :role)
     respond_to do |format|
       if @user.update(user_params)
         #puts 'Update '

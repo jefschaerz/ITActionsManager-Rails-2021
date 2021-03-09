@@ -8,10 +8,20 @@
 
 require 'faker'
 # OK : User.create!(username:"FromSeek2", lastname:"TestFS", firstname:"test2", role:"Admin", password_digest: BCrypt::Password.create('1234') , email:"abc@gmail.com")
-# Add admin
-User.create!(username:"Admin2", lastname:"Admin2", firstname:"Theboss", role:"Admin", password_digest: BCrypt::Password.create('1234') , email:"admin1@gmail.com")
+# Add Admin users
 
-# Create 10 users. 
+User.find_or_create_by!(username: "Admin3") do |user|
+     user.username = "Admin3"
+     user.lastname = "Admin"
+     user.firstname = "Theboss3"
+     user.role = "Admin"
+     user.password_digest= BCrypt::Password.create('1234')
+     user.email = "admin1@gmail.com"
+  end
+
+User.create!(username:"Admin2", lastname:"Admin2", firstname:"TheSecondBoss", role:"Admin", password_digest: BCrypt::Password.create('1234') , email:"administrator@gmail.com")
+
+# Create 10 Contributors users. 
 # Use create! to see errors in validations
 10.times do
   User.create! do |user|
@@ -24,12 +34,51 @@ User.create!(username:"Admin2", lastname:"Admin2", firstname:"Theboss", role:"Ad
     end
 end
 
-# Create 5 Intervention types
+# Create Intervention types
+InterventionType.create!(description:'Incident');
+InterventionType.create!(description:'Maintenance')
+InterventionType.create!(description:'Update')
+InterventionType.create!(description:'Information')
 
 # Create Intervention States
+InterventionState.create!(description:'Open')
+InterventionState.create!(description:'Closed')
+InterventionState.create!(description:'Pending')
 
-# Create Devices
+# Create Intervention States
+EquipmentType.create!(description:'PC')
+EquipmentType.create!(description:'Server')
+EquipmentType.create!(description:'Printer')
+EquipmentType.create!(description:'NAS')
+EquipmentType.create!(description:'Switch')
+
+# Create Devices PC
+5.times do |count|
+  Device.create! do |device|
+    device.description = 'PC' + #{count}
+    device.equipment_type = InterventionType.first
+    end
+end
+
+# Create Devices Switch
+5.times do |count|
+  Device.create! do |device|
+    device.description = 'Server' + #{count}
+    device.equipment_type = InterventionType.second
+    end
+end
 
 # Create 100 Interventions
+# Use create! to see errors in validations
+2.times do
+  Intervention.create! do |intervention|   
+    intervention.intervention_type_id = InterventionType.all.sample
+    intervention.user_id = User.all.sample
+    intervention.device_id = Device.all.sample
+    intervention.intervention_state_id = InterventionState.all.sample 
+    intervention.details = Faker::Lorem.words(number: 4, supplemental: true) #=> ["Planned", "Regulary", "Removed", "Fixed"]
+    intervention.summary = Faker::Lorem.sentence(word_count: 6) 
+    end
+end
 
 
