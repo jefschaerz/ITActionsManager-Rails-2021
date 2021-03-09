@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
   # GET /devices or /devices.json
   def index
     # Load also equipment_type directly
-    @pagy, @devices = pagy(Device.includes(:equipment_type), items:5)
+    @pagy, @devices = pagy(Device.includes(:equipment_type), items:20)
   end
 
   # GET /devices/1 or /devices/1.json

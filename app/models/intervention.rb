@@ -11,10 +11,10 @@ class Intervention < ApplicationRecord
   
   # Search by the param in the query
   scope :search, ->(query) {where('details like ?', "%#{query}%") }
-  scope :search_by_device, ->(query) {where('device_id like ?', "%#{query}%") }
-  scope :search_by_status, ->(query) {where('intervention_state_id like ?', "%#{query}%") }
-  scope :search_by_intervention_type, ->(query) {where('intervention_type_id like ?', "%#{query}%") }
-  scope :search_by_user, ->(query) {where('user_id like ?', "%#{query}%") }
+  scope :search_by_device, ->(query) {where('device_id = ?', "#{query}") }
+  scope :search_by_status, ->(query) {where('intervention_state_id = ?', "#{query}") }
+  scope :search_by_intervention_type, ->(query) {where('intervention_type_id = ?', "#{query}") }
+  scope :search_by_user, ->(query) {where('user_id = ?', "#{query}") }
   
   scope :search_query, ->(query) {
   puts "*** In search_query..."

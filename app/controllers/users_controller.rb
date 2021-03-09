@@ -47,8 +47,9 @@ class UsersController < ApplicationController
     user_params = params.require(:user).permit(:username, :email, :password, :password_confirmation)
     @user = User.new(user_params)
 
-    if @user.valid?
-      respond_to do |format|
+    
+    respond_to do |format|
+      if @user.valid?
         if @user.save
           # Redirect to login page   
           format.html { redirect_to login_url, success: "User was successfully created." }
@@ -56,10 +57,10 @@ class UsersController < ApplicationController
         else
           format.html { render :new, status: :unprocessable_entity }
           #format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
+        end    
     else
-      format.html { render :new }
+      format.html { render :new, danger: "This username already exists !"}
+    end
     end
   end
 
@@ -82,11 +83,11 @@ class UsersController < ApplicationController
         else
             format.html { redirect_to profil_url, success: "Your profil has been updated successfully." }
         end
-        #format.json { render :show, status: :ok, location: @user }
+        format.json { render :show, status: :ok, location: @user }
       else
         #puts 'Update echouée'
         format.html { render :edit, danger: "Problem during udpate."}
-        #format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

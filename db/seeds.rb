@@ -85,6 +85,30 @@ end
     end
 end
 
+# Create Devices Switch
+5.times do |count|
+  Device.create! do |device|
+    device.description = 'Printer' + Faker::Number.decimal_part(digits: 3)
+    device.equipment_type_id = 3
+    end
+end
+
+# Create Devices NAS
+5.times do |count|
+  Device.create! do |device|
+    device.description = 'NAS' + Faker::Number.decimal_part(digits: 2)
+    device.equipment_type_id = 4
+    end
+end
+
+# Create Devices Switch
+5.times do |count|
+  Device.create! do |device|
+    device.description = 'Switch' + Faker::Number.decimal_part(digits: 2)
+    device.equipment_type_id = 5
+    end
+end
+
 # Create 100 Interventions
 # Use create! to see errors in validations
 100.times do
@@ -94,8 +118,8 @@ end
     intervention.user_id = User.all.sample.id
     intervention.device_id = Device.all.sample.id
     intervention.intervention_state_id = InterventionState.all.sample.id 
-    intervention.details = Faker::Lorem.sentence(word_count: 3) 
-    intervention.summary = Faker::Lorem.sentence(word_count: 6) 
+    intervention.summary = Faker::Lorem.sentence(word_count: 3) 
+    intervention.details = Faker::Lorem.sentence(word_count: 6) 
     end
 end
 

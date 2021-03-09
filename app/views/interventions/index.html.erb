@@ -1,104 +1,108 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-     <h3>Interventions</h3>
+    <div class="row">
+        <div class="col-3">
+            <h3>Interventions</h3>
+        </div>
+        <div class="col">
+            <%= link_to 'New Intervention', new_intervention_path, :class => "btn btn-outline-success" %>
+        </div>
     </div>
-    <div class="col">
-      <%= link_to 'New Intervention', new_intervention_path, :class => "btn btn-outline-success" %>
-    </div>
-  </div>
 </div>
-
-<div class="container mt-2">  
+ <%= form_tag interventions_path, method: :get do %>
+<div class="container mt-4">
     <div class="row bg-light">
-        <div class="col-sm-1 form-group">
-        <h5>Search:</h5>
+        <div class="col-sm-3 d-flex align-items-center">
+            <h6>Search (in details or summary):</h6>
         </div>
-        <div class="col-sm form-group">  
-        <%= form_tag interventions_path, method: :get do %>            
+        <div class="col-sm form-group">           
             <%= text_field_tag  :search_query, params[:search_query], class: 'form-control' %>
-            <%= submit_tag 'Search', class: 'btn btn-primary' %> <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %></span>
-        <% end %>
+        </div>
+        <div class="col-sm-2 form-group">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+            <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %></span>
+            
         </div>
     </div>
 </div>
-
-<%= form_tag interventions_path, method: :get do %>
-    <div class="container mt-2">  
-        <div class="row bg-light">
-            <div class="col-sm form-group">
-            <h5>Filter by:</h5>
-            </div>
-            <div class="col-sm form-group">
-            <%= label_tag :search_by_status, "Search by status" %>
-            <%= select_tag :search_by_status, options_from_collection_for_select(InterventionState.all, :id, :description, params[:search_by_status]), include_blank: true %>
-            </div>
-            <div class="col-sm form-group">
-            <%= label_tag :search_by_device, "Search by device" %>
-            <%= select_tag :search_by_device, options_from_collection_for_select(Device.all, :id, :description, params[:search_by_device]), include_blank: true %>
-            </div>
-            <div class="col-sm form-group">
-            <%= label_tag :search_by_user, "Search by user" %>
-            <%= select_tag :search_by_user, options_from_collection_for_select(User.all, :id, :username, params[:search_by_user]), include_blank: true %>
-            </div>
-            <div class="col-sm form-group">
-            <%= label_tag :search_by_intervention_type, "Search by intervention type" %>
-            <%= select_tag :search_by_intervention_type, options_from_collection_for_select(InterventionType.all, :id, :description, params[:search_by_intervention_type]), include_blank: true %>
-            </div>
-            <div class="form-group mt-2">
-            <%= submit_tag 'Search', class: 'btn btn-primary' %>
-            <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %>
-            </div>
-        </div>
-    </div>
-
-   
 <% end %>
 
-<table class="table table-striped mt-2">
-  <thead>
-    <tr>
-      <th><%= link_to "Status", interventions_path(sorted_by: "intervention_state") %></th>
-      <!-- Add sorted by -->
-      <th><%= link_to "Device", interventions_path(sorted_by: "device") %></th>
-      <th>Summary</th>
-      <th>Details</th>
-      <th><%= link_to "Intervention type", interventions_path(sorted_by: "intervention_type") %></th>
-      <th>Date</th>
-      <th><%= link_to "User", interventions_path(sorted_by: "user") %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= form_tag interventions_path, method: :get do %>
+<div class="container mt-4">
+    <div class="row bg-light mt-4 mb-4">
+        <div class="col-sm-3 d-flex align-items-center">
+            <h6>Filter by:</h6>
+        </div>
+        <div class="col-sm form-group">          
+            <%= label_tag :search_by_status, "Status" %>
+            <%= select_tag :search_by_status, options_from_collection_for_select(InterventionState.all, :id, :description, params[:search_by_status]), include_blank: true %>
+        </div>
+        <div class="col-sm form-group">
+            <%= label_tag :search_by_device, "Device" %>
+            <%= select_tag :search_by_device, options_from_collection_for_select(Device.all, :id, :description, params[:search_by_device]), include_blank: true %>
+        </div>
+        <div class="col-sm form-group">
+            <%= label_tag :search_by_user, "User" %>
+            <%= select_tag :search_by_user, options_from_collection_for_select(User.all, :id, :username, params[:search_by_user]), include_blank: true %>
+        </div>
+        <div class="col-sm form-group">
+            <%= label_tag :search_by_intervention_type, "Intervention type" %>
+            <%= select_tag :search_by_intervention_type, options_from_collection_for_select(InterventionType.all, :id, :description, params[:search_by_intervention_type]), include_blank: true %>
+        </div>
+        <div class="col-sm-2 form-group mt-2">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+            <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %>
+        </div>
+    </div>
+</div>
+ <% end %>
 
-  <tbody>
-    <% @interventions.each do |intervention| %>
-        <!-- TODO : Try to make whole line clickeable insate of button -->
+<div class="container mt-4">
+ <h6> Number of interventions currently searched of filtered: <strong><%= @filteredinterventions.count %> </strong>  / Total number of interventions: <strong><%= @totalinterventions %></strong></h6>
+ </div>
+
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th><%= link_to "Status", interventions_path(sorted_by: "intervention_state") %></th>
+            <!-- Add sorted by -->
+            <th><%= link_to "Device", interventions_path(sorted_by: "device") %></th>
+            <th>Summary</th>
+            <th>Details</th>
+            <th><%= link_to "Intervention type", interventions_path(sorted_by: "intervention_type") %></th>
+            <th>Date</th>
+            <th><%= link_to "User", interventions_path(sorted_by: "user") %></th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @interventions.each do |intervention| %>
+        <!-- TODO : Try to make whole line clickeable instate of button -->
         <!--%= link_to edit_intervention_path(intervention) do %-->
         <tr>
-        <td><%= intervention.intervention_state.description %></td>
-        <td><%= intervention.device.description %></td>
-        <td><%= intervention.summary %></td>
-        <td><%= intervention.details %></td>      
-        <td><%= intervention.intervention_type.description %></td>
-        <td><%= intervention.date %></td>
-        <td><%= intervention.user.username %></td>
-        <!--Only if users's intervention -->
-        <% if isUserConnectedIntervention?(intervention) or isAdmin? %>
-        <td><%= link_to 'Edit', edit_intervention_path(intervention) %></td>
-        <!-- Only if admin -->
-        <%end%>
-        <% if isAdmin? %>
-        <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
-      </tr>
-      
-    <% end %>
-  </tbody>
+            <td><%= intervention.intervention_state.description %></td>
+            <td><%= intervention.device.description %></td>
+            <td><%= intervention.summary %></td>
+            <td><%= intervention.details %></td>
+            <td><%= intervention.intervention_type.description %></td>
+            <td><%= intervention.date %></td>
+            <td><%= intervention.user.username %></td>
+            <!--Only if users's intervention -->
+            <% if isUserConnectedIntervention?(intervention) or isAdmin? %>
+            <td><%= link_to 'Edit', edit_intervention_path(intervention) %></td>
+            <!-- Only if admin -->
+            <%end%>
+            <% if isAdmin? %>
+            <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%end%>
+        </tr>
+
+        <% end %>
+    </tbody>
 </table>
 <%= pagy_bootstrap_nav(@pagy).html_safe%>
 
 <!-- For debug -->
 <!--p> intervention : <%= debug @interventions.inspect %> </p-->
-
