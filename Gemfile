@@ -26,6 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
 gem 'pagy', '~> 3.5'
 gem 'has_scope'
+gem 'faker'
 
 
 # Use Active Storage variant

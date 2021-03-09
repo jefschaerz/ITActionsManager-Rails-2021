@@ -69,6 +69,7 @@ Tables nécessaires :
 * Simple_Form :https://github.com/heartcombo/simple_form
 * Pagy V3.11 pour la pagination : https://github.com/ddnexus/pagy
 * Utilsation de scope pour filtrer les résultats selon http://filterrific.clearcove.ca/pages/active_record_scope_patterns.html
+* Faker : https://github.com/faker-ruby/faker
 
 <a name="remarques-projet"></a>
 # Remarques sur le projet
