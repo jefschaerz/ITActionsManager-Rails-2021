@@ -1,19 +1,17 @@
 <!-- Manage errors -->
-
-
 <div class="form mt-3">
-    <h3>Se connecter</h3>
+    <h3>Login</h3>
 
     <%= form_for :user, url: new_session_path, html: { class: "form-horizontal"} do |f| %>
     <div class="mb-3">
-        <%= f.label :username, "Nom d'utilisateur", class: 'form-label' %>
+        <%= f.label :username, "Username", class: 'form-label' %>
         <div class="mb-3 col-md-6">
             <%= f.text_field :username, class: 'form-control' %>
         </div>
     </div>
 
     <div class="mb-3">
-        <%= f.label :password, "Mot de passe", class: 'col-md-4 form-label' %>
+        <%= f.label :password, "Password", class: 'col-md-4 form-label' %>
         <div class="mb-3 col-md-6">
             <%= f.password_field :password, class: 'form-control' %>
         </div>
@@ -21,9 +19,8 @@
 
     <div class="mb-3">
         <div class="mb-3 col-md-6">
-            <button type="submit" class="btn btn-primary">Se connecter</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </div>
-
     <%end%>
 </div>

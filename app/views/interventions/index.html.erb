@@ -14,7 +14,7 @@
 <div class="container mt-4">
     <div class="row bg-light">
         <div class="col-sm-3 d-flex align-items-center">
-            <h6>Search (in details or summary):</h6>
+            <h6>Search (in summary or details):</h6>
         </div>
         <div class="col-sm form-group">           
             <%= text_field_tag  :search_query, params[:search_query], class: 'form-control' %>
@@ -51,7 +51,7 @@
             <%= select_tag :search_by_intervention_type, options_from_collection_for_select(InterventionType.all, :id, :description, params[:search_by_intervention_type]), include_blank: true %>
         </div>
         <div class="col-sm-2 form-group mt-2">
-            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+            <%= submit_tag 'Filter', class: 'btn btn-primary' %>
             <%= link_to 'Clear', interventions_path, class: 'btn btn-link' %>
         </div>
     </div>

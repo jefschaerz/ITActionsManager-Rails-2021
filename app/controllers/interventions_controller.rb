@@ -16,7 +16,7 @@ class InterventionsController < ApplicationController
     puts "In index..." 
     @totalinterventions = Intervention.all.count
     @filteredinterventions = apply_scopes(Intervention.includes(:device, :intervention_type, :user, :intervention_state))
-    @pagy, @interventions = pagy(@filteredinterventions,items:10)
+    @pagy, @interventions = pagy(@filteredinterventions,items:15)
     #@pagy, @interventions = pagy(apply_scopes(Intervention.includes(:device, :intervention_type, :user, :intervention_state)),items:10)
   end
 
