@@ -40,9 +40,7 @@ Deux types d'utilisateur sont possibles (rôle) :
 L'utilisateur "__Contributor__" ne peut que :
 * Editer son profil
 * Visualiser la liste des équipements, la liste des types d'intervention et la liste des appareils
-* Visualiser, créer et modifier des interventions sur des équipements (modification seulement sur ces propre inteventions).
-
-![View of contrbibutor](doc/Equipment_type_list.png)
+* Visualiser, créer et modifier des interventions sur des équipements (modification seulement sur ces propres interventions).
 
 L'utilisateur "__Admin__" a, en plus, le droit de  :
 * Créer/modifier ou effacer des types d'équipements, des types d'interventions et des équipements
@@ -50,23 +48,21 @@ L'utilisateur "__Admin__" a, en plus, le droit de  :
 
 ![Users](doc/Users_list.png)
 
+![View of contrbibutor](doc/Equipment_type_list.png)
+
 Lors de la création d'une nouvelle intervention ou équipement, il faut fournir un certain nombre d'information nécessaires.
 
 ![New intervention](doc/New_intervention.png)
 
 Il est possible de rechercher dans les interventions (dans le detail ou dans le summary) grâce à des mots fournis. 
 
+Des filtres sur les différents champs peuvent également être utilisés pour encore limiter à une partie des interventions.
+
+Les résultats sont affichées par page avec des informations sur le nombre total ou trouvé.
+
 ![Recherche](doc/Intervention_searched.png)
 
-Des filtres sur les différents champs peuvent également être utilisés pour ne voir qu'une partie des interventions.
-
-![Recherche](doc/Intervention_filtered.png)
-
-Dans les deux cas, les résultats sont affichées par page avec des informations sur le nombre total ou trouvé.
-
-La recherche et le filtrage ne peuvent pas être utilisés en même temps. C'est l'un ou l'autre.
-
-Il est également possible de trier par certains colonnes (Status, Device, Intervention_type). 
+Il est également possible de trier par certaines colonnes (Status, Device, Intervention_type). 
 Ceci va regrouper les interventions (mais pas par ordre alphabétique, par id)
 
 <a name="tester-application"></a>
@@ -82,7 +78,7 @@ Pour remplir votre base de données avec ses valeurs, il suffit de :
 
 Les utilisateurs déjà créés utilisent tous le même mot de passe : __1234__
 
-Voici deux utilisateur possible pour se connecter:
+Voici deux utilisateurs possible pour se connecter:
 * __Admin1__ (admin)
 * __UserA__ (contributor)
 
@@ -94,7 +90,7 @@ Tables et champs nécessaires :
 * Pour les devices (id, description:string, type_equipement:reference)
 * Pour les types d'intervention (id, description:string)
 * Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, intervention_state:id)
-* Pour les états des interventions (id, description:string)
+* Pour les états d'intervention (id, description:string)
 
 <a name="ressources-externes"></a>
 # Ressources externes
@@ -110,7 +106,6 @@ Voici la liste des resources utilisés pour facilite ou simplifier le développe
 <a name="remarques-projet"></a>
 # Remarques sur le projet
 * Les fonctionnalités du frameworok Ruby on rails sont très intéressantes et les scaffold pemettent de développer rapidement une application CRUD avec déjà beaucoup de 
-
 vues disponibles. 
 * Durant le développement et les recherches faites, souvent plusieurs solutions existent pour atteindre le but recherché. L'expérience permet certainement de mieux savoir quelle solution 
 mettre en place par rapport au performance, eé l'évolution ou autre facteurs.
