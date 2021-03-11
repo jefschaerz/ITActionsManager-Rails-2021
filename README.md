@@ -18,6 +18,8 @@ Ce repository contient les sources du projet "ITActionManager" réalisé dans le
 L'application "ITActionsManager" permet à des gérer les actions et interventions réalisées sur des équipements informatiques de plusieurs types. 
 C'est en fait un journal des actions de suivi sur les équipements.
 
+![List intervention](doc/Intervention_list_all.png)
+
 <a name="utilisation-application"></a>
 # Utilisation de l'application
 L'utilisateur doit d'abord se connecter dans l'application avec son nom d'utilisateur et son mot de passe. 

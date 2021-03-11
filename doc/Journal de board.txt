@@ -1,0 +1,402 @@
+Projet pour FRM : RoR - ITActionMaanger
+---------------------------------------
+
+Dépôt : https://github.com/jefschaerz/ITActionsManager.git
+
+Lien Gitpod : 	
+	ITActionManager :	https://gitpod.io#github.com/jefschaerz/ITActionsManager.git
+												
+	TODOMVC :			https://cafa5bd4-ad84-4071-b0bf-258f850d7e66.ws-eu03.gitpod.io/#/workspace/todomvc-rails-2020
+
+******************************
+Description de l'application :
+******************************
+Voir fichier Readme.md :  https://github.com/jefschaerz/ITActionsManager-Rails-2021
+
+Conventions :	https://gist.github.com/iangreenleaf/b206d09c587e8fc6399e
+I18n et SimpleForm : http://blog.plataformatec.com.br/2010/06/simpleform-forms-made-easy/
+Au lieu de simpleform : Formtastic :	https://www.rubydoc.info/github/justinfrench/formtastic/Formtastic/Inputs/DatetimePickerInput
+Filtre et sort : http://filterrific.clearcove.ca/pages/active_record_scope_patterns.html#sort
+Test et System Tests (slow) :	https://www.youtube.com/watch?v=QNZt7FCVYro
+								https://guides.rubyonrails.org/v6.1/testing.html (6.0)
+								
+rails test test/devices_test.rb
+
+NE PAS UTILISER TAB, mais deux espacs dans CODE !
+
+Format Document Tehia : F1 + format Document
+
+
+******************************
+BackLog :
+******************************
+
+Jour restants : Mardi 9.03 (8h) / samedi 13.03 8h
+
+---- TODO ------
+TODO 0 : 	Readme file update with screenshots
+				Info Seeds and how to start
+
+TODO 0 :	Remove unused route in route.rb
+
+---- NON -------
+TODO 0 : 	Add tests 
+			Create System Test and run aec : 	rails test:system --> fails
+				Add Test db with :"RAILS_ENV=test rake db:reset" : DB created
+			--> Problem Webdrivers::BrowserNotFound: Failed to find Chrome binary.
+			Reprise deèpuis le projet TODOVMC /system/application_system_tst_case.rb
+			-->	Selenium::WebDriver::Error::WebDriverError: not a file: "/usr/local/bin/chromedriver"
+			
+			Create model test et run avec : rails test test/models/device_test.rb 
+				--> Test Fonctionne OK
+				
+			!! ASK Thiebaud !!	--> to complicated
+TODO 0 :	Sort by column not working (sorted by id and not by alpha)
+TODO 1 : 	Toggle state par click (Stimulus)
+TODO 1 : 	Layout Bootstrap :
+				- Definir pour une ressource le style
+				- Utilisation partielle de simple_form			
+TODO 1 :	Improve change of state in interventions (select or buttons
+TODO 0 :  	Change Role to a table and migration !!! : NON
+TODO 1 : 	Utilisation de Cancancan pour droits (problème d'édition)-- > pas forcément
+TODO 1 : 	Traduction i18i (voir Vidéo 26/30 à 14'24)  : NON
+				
+----DONE ----
+TODO 0 :	Display count open interventions or users of.. (voir video J4)
+DONE 1 :	Filter by Device or Type : 
+				Look f.select like: https://www.youtube.com/watch?v=rf6B9oo1zPY
+				https://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/collection_select
+DONE 0 : 	Manage CRUD action per role correctly
+			Admin : Edit and destroy (change Device_type)
+DONE 0 : Check intervention SCHEMA with State_id or Schema.rb
+			Should be intervention_state_id and not state_id !!
+			Use migration to set up correctly schema!
+			Mayby checkout back to previous version !?
+			
+DONE 0 : 	For Devices allow :
+			User : Show list
+			Admin : Edit and destroy (change Device_type)
+DONE 0 :	Create InterventionState (open, closed, pending)
+DONE 1 : 	Fonction de recherche simple dans intervention
+DONE 0 :	Add pagination in interventions : https://github.com/ddnexus/pagy
+DONE 1 : 	Contributor can only edit own interventions.
+DONE 0 :	Mockup ou schéma des pages/possibilités	--> in Readme.md
+DONE 0 : 	Convert Device type, Intervention Type and State to readable values
+DONE 0 : 	Création des tables avec les bons champs et types avec rails scaffold generate pour users, ...
+			https://www.railstutorial.org/book/toy_app#sec-modeling_demo_users
+DONE 0 : 	Add "role" in Users db by a migration
+DONE 0 :	Définir les champs des tables
+DONE 0 : 	Add navigation bar			
+DONE 0 : 	Add database MySQL au projet		
+DONE 0 :	Création sur Gitpod de l'environnement
+DONE 0 : 	Création d'un repository sous Github avec le nom. Mettre dans le fichier Docs
+				- Readme.md
+				- Cloner en local et tester update par gitpod
+DONE 0 :	Définir les limites du projets
+				- fournir au Prof une specificaion (use cases)
+				
+******************************
+Liens utiles
+******************************
+- Seed db : https://www.youtube.com/watch?v=1ZkwvPMiq4Q
+- Scaffold : Voir vidéo J1 - 1h18
+- Gestion des users :	https://www.youtube.com/watch?v=Nc_AfbwmDrM&list=PLjwdMgw5TTLWfI1B2Wv2WPgR9iOyw12zi&index=19
+	Utilisation de Bcrypt pour mot de passe... (19/30) - 17min
+- Administration des rôles : https://www.youtube.com/watch?v=9To9no1HmE8&list=PLjwdMgw5TTLWfI1B2Wv2WPgR9iOyw12zi&index=20
+		
+- Helpers : https://www.rubyguides.com/2020/01/rails-helpers/		
+
+Pour démarrer correctement l'application (y compris Mysql) :
+- Démarrer le Gitpod	
+- bin/rails server
+
+CSS : \public\styleesheet
+
+Accès MySQL par gitpod :
+mysql -e "show databases;"
+
+
+******************************
+Actions réalisées
+******************************
+
+TODO : Create specifique Form (like users with bootstrap) for Equipement and display reference values in state of code :
+	https://stackoverflow.com/questions/16848702/rails-displaying-foreign-key-references-in-a-form
+
+
+11.03.2021 - 20h-22h15
+----------------------------
+- update readme with screenshots in /docs/
+- small adaptation
+- finalize 
+- Remove Todo
+
+09.03.2021 - 08h40 - 16h + 20h30 - 22h30 (10h) - Total 60h
+----------------------------
+- Add tests
+- Add user by seeds (use Create!)
+	rails db:seed : OK
+	Create seed for every resources
+	Clean db with 	rails db:migrate:reset
+		--> DB empty
+	Seed with 	rails db:seed --trace
+		--> Work +/-
+	Need to adapt intevetnion table to add device_id and intevetnion_state_id by a migration
+		add_reference :interventions, :intervention_states, null: false, foreign_key: true
+		add_reference :interventions, :devices, null: false, foreign_key: true
+	!! DB creation and seed Works using 
+		rails db:migrate:reset
+		rails db:seed --trace
+- Improve Search and Filter view
+TODO 0 :	Validate fields in creation forms (client side and server-side)	
+
+- Fix Filter query
+- Improve Lyout intervetnions
+
+08.03.2021 - 21h - 22h15 (1h)
+----------------------------
+- Fix : User changes not working if in Admin. Check
+- Remove "destroy " thing s because not managed (On delete Cascade !)
+- Remove resource (delete manually)
+
+03.03.2021 - 20h30 - 22h15 (2h)
+----------------------------
+- Add filter by device,..and search 
+- Improve Layout !
+
+Problem Gitpod : 
+Last run a minute ago: cannot pull image: Back-off pulling image "reg.gitpod.io:31000/remote/e7a0f7a5-2674-41d0-a5f2-aec7ef6ae20b"; last backup failed: cannot delete workspace from store. Please contact support if you need the workspace data.
+--> Solution : essyer 1'0' plus tard
+
+
+02.03.2021 - 07h30 - 16h30 / 20h - 22h15 (10h)
+----------------------------
+- Use _form partials to not DRY
+- Remove Filtreric not working !
+- Use Filterric gems to filter
+	Difficile 
+- Add Advanced search (several criterion)
+- Change ntervention view colum order
+- Manage CRUD action per role correctly
+- Ty to use DateTimepicker for date !
+
+01.03.2021 - 20h30 - 22h30 (2h)
+----------------------------
+
+- remove from Schema state_id and add Intervetnions_type_id reference by migration
+	not possible cas plus dans la db, mais dans le shchema. Enlver mahuellement de schema.rb
+- Ajout lien : rails g migration AddInterventionsStateToInterventions interventionstates:references
+- Modification manuel de schema.rb et db pour matcher
+
+23.02.2021 - 08h00 - 12h / 13h - 15h (6h)
+----------------------------
+
+- Add scaffold for interventionState:
+	bin/rails g scaffold InterventionState description:string
+	Appliquer la migration par :
+	bin/rails db:migrate 
+	Add belongs_to and has_many
+- Add migration :
+	Change state in interventions table to references:intervention_state
+- Add filter with has_scope for intevention by details : https://www.youtube.com/watch?v=ovItZv_1doI
+- Add pagination with pagy
+- Remove unnecessary show links. redirec_to index after create or update
+- Add contributor restrictions in actions (in view AND in controller)
+- Limitation des actions des users 
+- Recherche d'affichage de la description au lieu de l'id
+	OK with declare in controller, but correct method ?
+
+22.02.2021 - 21h15 - 22h15 (1h - Total 29h)
+----------------------------
+
+- Recherche d'affichage de la description au lieu de l'id
+
+15.02.2021 - 15h30 - 21h30 (6h)
+----------------------------
+
+- Add scaffold "Devices" to replace resources and migrate
+- Add scaffold for Resources with forgeinkey to equipement types:
+	bin/rails g scaffold Device description:string equipment_type:references
+	--> cela a aussi crée les units de test : OK
+- Migration pour DB : 
+	bin/rails db:migrate
+- Add list of equipement in fields interventions
+	Add Simple Form : 
+		- Add in gem
+		- Bundle install
+		- rails generate simple_form:install --bootstrap, 
+	
+- Add link in intervention to devices
+	rails g migration AddDeviceToInterventions device:references
+- Remoce resource from internvetions
+	rails g migration RemoveResourceFromInterventions resource:references
+	bin/rails db:migrate
+
+- Add role for user
+	rails g migration addRoleToUsers
+	Update user Jef and admin to admin role
+	Other are only user
+	
+- Improve edition of profil or user (admin)
+	
+	
+
+10.02.2021 - 21h-22h (1h - total 22h)
+----------------------------
+
+- Fix problem with update (extra <form> writen) - YESSSSS !
+
+09.02.2021 - 08h00 - 11h45 / 13h - 15h30 / 20h - 22h30 (8h)
+----------------------------
+
+- Fix login with sessions
+- Current_user added
+- Add scaffold for equipement type:
+	bin/rails g scaffold EquipmentType description:string
+	Appliquer la migration par :
+	bin/rails db:migrate 
+- Add scaffold for intervention:
+	bin/rails g scaffold InterventionType description:string
+	Appliquer la migration par :
+	bin/rails db:migrate 
+- Add links to CRUD action in Navbar
+- Add scaffold for Equipments with forgeinkey to equipement types:
+	bin/rails g scaffold Equipment description:string equipment_type:references	(liaison)
+	bin/rails db:migrate 
+	!! Probleme car cela ne créer pas les nom avec Equipments avec S !(convetions!)
+	Changer de nom de resources !! --> Resource au lieu Equipement
+- Add scaffold for Resources with forgeinkey to equipement types:
+	bin/rails g scaffold Resources description:string equipment_type:references :OK
+>>> Attention a mettre au singulier !! equipment_type et resource>>
+
+Info de Thiebaud pour Patch !
+- Pour les update des equipement_types, cela fonctionne (render) ! mais pas pour le Users profil
+
+- Essayer de lier equipement avec equipement_type. Resource peut être ajouté : OK
+	bon : même contre si hors limite des equipment_type existants
+	Par contre pas possible d'afficher le resouce.equipement_type.description ??
+	
+-  Créer la table Intervention avec Scaffold
+	Faire liaison "Intervention_type" et "Intervention" et resource (belongs and has_many)
+		Une Intervention belongs to intervention_Type et Resources
+		Intervention : (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, open_state:boolean)
+	
+>>> 	bin/rails g scaffold Interventions date:datetime summary:string details:text state:boolean resource:references intervention_type:references user:references
+
+- Test de céreation de Edit pour Resources avec form, mais même problème de ptach pas fait (que Edit)
+
+08.02.2021 - 20h30 - 23h00 : (2h30)
+----------------------------
+
+- Update Navbar
+- Improve Bootstrap sue in new user
+- Add user connected actions
+- Add Sessions controller
+!! Ne fonctionne pas. Voir authenticity_token
+
+
+
+03.02.2021 - 14h00 - 16h00 : (2h)
+----------------------------
+
+- Add Nav bar
+- Add formulaire customisé pour inscription d'un utilisateur.
+- Activation GEM Bcrypt et has_secure_Password pour user
+- Gestion de l'ajout réél dans la DB : Ok
+
+
+
+02.02.2021 - 08h00 - 16h00 : (8h)
+----------------------------
+
+- Add Bootstrap par CDN (dans Application.rb)
+- Création d'un scaffold pour les USERS avec :
+	"bin/rails g scaffold User username:string email:string password_digest:string firstname:string lastname:string"
+	Appliqurer la migration par bin/rails db:migrate 
+	--> Cela va créer le controller (Avec les commandes CRUD) et les vues...
+
+
+- Reflexion sur choix de la DB
+	- SQLite par défaut.
+	- MySQL ?
+	--> MySql: Migration donc avec la commande "rails db:system:change --to=mysql" : OK
+	https://bigbinary.com/blog/rails-6-has-added-a-way-to-change-the-database-of-the-app
+	Il faut faire un bundle install pour mettre à jour les dépendances
+
+- Mise en place de l'environnement Gitpod pour application RoR
+	(revoir vidéo avec prof - J1 1h17)
+	Lancement de gitpodio#
+
+	- Création du dépo sur Github : ITActionsManager-Rails-2021
+	- Ouveture sur gitpod directement
+	Utilisation du guidance et start project :
+	- Create gitpod.yaml (npm start)
+	- Update gitpod.Docker avec : Defautlt + MySQL
+	- Update readme
+
+	- Installation des outils Rails selon  :
+		Configuration selon
+		- https://www.gitpod.io/docs/configuration/
+		- https://guides.rubyonrails.org/getting_started.html
+		Les softs sont installé :
+			gitpod /workspace/CAS-DAR_RoR-PCActionsManager $  ruby --version
+			ruby 2.6.6p146 (2020-03-31 revision 67876) [x86_64-linux]
+			gitpod /workspace/CAS-DAR_RoR-PCActionsManager $ sqlite3 --version
+			3.31.1 2020-01-27 19:55:54 3bfa9cc97da10598521b342961df8f5f68c7388fa117345eeb516eaa837balt1
+			gitpod /workspace/CAS-DAR_RoR-PCActionsManager $ sqlite3 --version
+			3.31.1 2020-01-27 19:55:54 3bfa9cc97da10598521b342961df8f5f68c7388fa117345eeb516eaa837balt1
+			gitpod /workspace/CAS-DAR_RoR-PCActionsManager $ node --version
+			v14.15.4
+			gitpod /workspace/CAS-DAR_RoR-PCActionsManager $ yarn --version
+			1.22.10
+		Installation de rails : gem install rails
+		Creation de l'application par (depuis niveau sup) : rails new ITActionsManager-Rails-2021
+			Ecraser les fichier existants
+			Cela crée la structure (correctement) et installe les dépendances
+			Installation de bundler avec (dans dossier app) :
+				gem install bundler:2.1.4
+			Install toutes les dépendances (bundle contrôler les dépendances par les GEM)
+				bundle install
+		Démarrage de l'application par 
+			cd ITActionsManager-Rails-2021
+			bin/rails server :OK
+		Blocked Host dans Browser
+			-- ajout config.hosts << /.*\..*\.gitpod\.io/ dans config/environnement/developpemtn.rb (comme Todomvc)
+		
+		Application fonctionne correctement.	
+		Mais ps possible de commit des données
+			
+
+01.02.2021 - 21h30 - 22h30 : (1h)
+----------------------------
+
+- Création du dépo sur Github
+- Clone du projet en local : OK
+- First commit
+- Création sur Gitpod d'une nouvelle application RoR avec ce github
+
+******************************	
+Objectif --> Voir info mini-projet dans CyberLearn
+******************************
+https://cyberlearn.hes-so.ch/mod/page/view.php?id=1392374
+
+Périmètre technologique/fonctionnel
+	• Une base de données avec au moins 2 tables
+		- Users
+		- Roles
+		- Equipement
+		- Incidents
+	• Un Framework au choix (parmi les 3 enseignés)
+		- Ruby on rails
+	• Des vues avec au moins ces fonctionnalités :
+		• Authentification/gestion d’utilisateurs
+		• CRUD par table
+	• 1 page de recherche simple/avancé
+Equipe
+	• 1 ou 2 (à choix)
+Calendrier
+	• 28.01.2021 – les étudiants annoncent leurs projets (équipe,  scope de l’application, Framework à utiliser)
+	• 28.01.2021 – Nabil informe les collègues sur les choix des étudiants. Chaque enseignant suit les projets faits dans le framework qu’il a enseiggné
+	• 15.03.2021 – Rendu du projet. Chaque enseignant s’organise avec ses étudiants pour la forme de rendu (dropbox, githUb, etc)
+Fin mars 2021 : enseignants évaluent les projets
+	
