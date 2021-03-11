@@ -76,7 +76,6 @@
     <tbody>
         <% @interventions.each do |intervention| %>
         <!-- TODO : Try to make whole line clickeable instate of button -->
-        <!--%= link_to edit_intervention_path(intervention) do %-->
         <tr>
             <td><%= intervention.intervention_state.description %></td>
             <td><%= intervention.device.description %></td>

@@ -54,10 +54,8 @@ Lors de la création d'une nouvelle intervention ou équipement, il faut fournir
 
 ![New intervention](doc/New_intervention.png)
 
-Il est possible de rechercher dans les interventions (dans le detail ou dans le summary) grâce à des mots fournis. 
-
+Il est possible de rechercher dans les interventions (dans lee summary ou les detail) grâce à des mots fournis. 
 Des filtres sur les différents champs peuvent également être utilisés pour encore limiter à une partie des interventions.
-
 Les résultats sont affichées par page avec des informations sur le nombre total ou trouvé.
 
 ![Recherche](doc/Intervention_searched.png)

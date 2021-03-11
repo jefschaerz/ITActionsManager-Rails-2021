@@ -28,8 +28,6 @@
 <div class="mb-3 col-md-6">
     <!-- Use simple_form association to get device description in field but save the id -->
     <%= f.association :intervention_state, collection: InterventionState.pluck(:description, :id), prompt: "Select the status type" %>
-    <!-- Todo as radio buttons ?-->
-    <!--%= f.association :intervention_state, collection: InterventionState.pluck(:description, :id), prompt: "Select the status type", as: :radio_buttons  %-->   
 </div>
 
   <div class="form-actions mb-3 col-md-6">
