@@ -8,8 +8,8 @@ Ce repository contient les sources du projet "ITActionManager" réalisé dans le
 
 - [Description de l'application](#description-application)
 - [Utilisation de l'application](#utilisation-application)
-- [Choix lors du développpement](#choix-developpement)
-- [Remplir la base de données](#remplir-db)
+- [Tester l'application](#tester-application)
+- [Choix lors du développement](#choix-developpement)
 - [Ressources externes](#ressources-externes)
 - [Remarques sur le projet](#remarques-projet)
 
@@ -18,33 +18,46 @@ Ce repository contient les sources du projet "ITActionManager" réalisé dans le
 L'application "ITActionsManager" permet à des gérer les actions et interventions réalisées sur des équipements informatiques de plusieurs types. 
 C'est en fait un journal des actions de suivi sur les équipements.
 
-![List intervention](doc/Intervention_list_all.png)
+![List intervention](doc/Interventions_list_all.png)
 
 <a name="utilisation-application"></a>
 # Utilisation de l'application
 L'utilisateur doit d'abord se connecter dans l'application avec son nom d'utilisateur et son mot de passe. 
+
+![Login](doc/Login.png)
+
 Pour un nouvel utilisteur, il est nécessaire de s'inscrire en fournissant un username et une adresse e-mail aini qu'un mot de passe.
-Ce nouvel utilisateur ne sera que "Contributor".
+Ce nouvel utilisateur ne sera que un "Contributor".
+
+![Register](doc/register.png)
+
+Le changement de role n'est possible que par un administrateur
 
 Deux types d'utilisateur sont possibles (role) :
-* Admin
-* Contributor 
+* __Admin__
+* __Contributor__ 
 
 L'utilisateur "Contributor" ne peut que :
-** Editer son profil
-** Visualiser la liste des équipements, la liste des types d'intervention et la liste des appareils
-** Visualiser, créer et modifier des interventions sur des équipements (modification seulement sur ces propre inteventions).
+* Editer son profil
+* Visualiser la liste des équipements, la liste des types d'intervention et la liste des appareils
+* Visualiser, créer et modifier des interventions sur des équipements (modification seulement sur ces propre inteventions).
+
+![View of contrbibutor](doc/Equipment_type_list.png)
 
 L'utilisateur "Admin" a, en plus, le droit de  :
 * Créer/modifier ou effacer des types d'équipements, des types d'interventions et des équipements
 * Voir la liste des utilisateurs
 
-Lors de la création d'une nouvelle intervention ou équipement, il faut fournir les informations nécessaires.
+![Users](doc/USers_list.png)
+
+Lors de la création d'une nouvelle intervention ou équipement, il faut fournir un certain nombre d'information nécessaires.
+
+![New intervention](doc/New_intervention.png)
 
 Les équipements (device) possèdent les informations suivantes :
 * No d'équipement (unique) / Auto
 * Description (ex PC001)
-* Type (PC ou Serveur ou Imprimante)
+* Type (PC ou Server, Printer, etc...)
 
 Les "interventions" sont créées en fournissant les informations :
 * No intervention (unique)
@@ -55,8 +68,17 @@ Les "interventions" sont créées en fournissant les informations :
 * Détails de l'intervention
 * Etat de l'intervention (Open, Close ou Pending)
 
+<a name="tester_application"></a>
+# Test l'application
+__Un fichier seed.rb permet de remplir la base avec un certain nombre de resources__.
+* Lancer la commande "rails db:migrate:reset" pour nettoyer la db actuelle et appliquer les migrations
+* Lancer la commande "rails db:seed" pour populer la bd.
+Les utilisateurs utilisent le même mot de passe : 1234 avec notamment un utilisateur :
+* Admin1 (admin)
+* UserA (contributor)
+
 <a name="choix-developpementn"></a>
-# Choix du développpement
+# Choix du développement
 Tables nécessaires :
 * Pour les users (id, username: string, email:string, password_digest:string, firstname:string, lastname:string, role:string)
 * Pour les types d'équipement (id, description:string)
@@ -64,16 +86,6 @@ Tables nécessaires :
 * Pour les types d'intervention (id, description:string)
 * Pour les interventions (id, date:datetime, user:id, intervention_type:id, resource:Id, details:text, intervention_state:id)
 * Pour les états des interventions (id, description:string)
-
-<a name="remplir-db"></a>
-# Remplir la base de donnéesdb
-Un fichier seed.rb permet de remplir la base avec un certain nombre de resources.
-Lancer la commande "rails db:migrate:reset" pour nettoyer la db actuelle et appliquer les migrations
-Lancer la commande "rails db:seed" pour populer la bd.
-Les utilisateurs utilisent le même mot de passe : 1234 avec notamment un utilisateur :
-* Admin1 (admin)
-* UserA (contributor)
-
 
 <a name="ressources-externes"></a>
 # Ressources externes
