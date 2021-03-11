@@ -69,7 +69,7 @@ La recherche et le filtrage ne peuvent pas être utilisés en même temps. C'est
 Il est également possible de trier par certains colonnes (Status, Device, Intervention_type). 
 Ceci va regrouper les interventions (mais pas par ordre alphabétique, par id)
 
-<a name="tester_application"></a>
+<a name="tester-application"></a>
 # Test l'application
 Pour tester l'application après avoir récupérer les sources, il faut :
 * Lancer la commande "rails server"
@@ -86,7 +86,7 @@ Voici deux utilisateur possible pour se connecter:
 * __Admin1__ (admin)
 * __UserA__ (contributor)
 
-<a name="choix-developpementn"></a>
+<a name="choix-developpement"></a>
 # Choix lors développement
 Tables et champs nécessaires :
 * Pour les users (id, username: string, email:string, password_digest:string, firstname:string, lastname:string, role:string)
@@ -102,10 +102,10 @@ Voici la liste des resources utilisés pour facilite ou simplifier le développe
 * Bootstrap v5.0 (par CDN) 
 * Bcrypt : pour l'encryption des mots de passe
 * Flash messages : https://www.rubyguides.com/2019/11/rails-flash-messages/
-* Simple_Form :https://github.com/heartcombo/simple_form
-* Pagy V3.11 pour la pagination : https://github.com/ddnexus/pagy
+* Simple_Form : https://github.com/heartcombo/simple_form
+* Pagy V3.11 : pour la pagination : https://github.com/ddnexus/pagy
 * Utilsation de scope pour filtrer les résultats selon http://filterrific.clearcove.ca/pages/active_record_scope_patterns.html
-* Faker : https://github.com/faker-ruby/faker
+* Faker : pour introduire des valeurs factices : https://github.com/faker-ruby/faker
 
 <a name="remarques-projet"></a>
 # Remarques sur le projet
@@ -127,10 +127,12 @@ mais aussi après coup manuellement pour tester quelques possibilités de base.
 même si cela est presque déjà un projet en lui-même (User expérience)
 
 <a name="Améliorations possibles"></a>
-# Améliorations possibles parmi tant...
+# Améliorations possibles
+Certainement beaucoup, mais notamment :
 * Validation approfondie des champs saisis 
 * Utilisation d'un objet "session" pour la gestion d'un utilisateur connecté
 * L'utilisation des partials pour diminuer la duplication de code dans les vues pour les New ou Edit
+* Améliorations des filtres et trie sur les colonnes (alphabétique)
 * Activation de la suppression d'un User ou Intervention type, mais gestion des dépendances lors d'effacement par modificaton des foreign key en "On Delete Cascade" (et pas en On Delete Restrict par défaut)
 * Utilisation d'un model pour le rôle et pas uniquement une string dans le modèle user.
 * Responsive design

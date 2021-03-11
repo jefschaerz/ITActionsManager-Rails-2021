@@ -12,12 +12,10 @@ class InterventionsController < ApplicationController
   # GET /interventions or /interventions.json
   def index
     # Load also other informaion in order to be able to display info in the list (and not only id) 
-    # Use pagy
-    puts "In index..." 
+    # puts "In index..." 
     @totalinterventions = Intervention.all.count
     @filteredinterventions = apply_scopes(Intervention.includes(:device, :intervention_type, :user, :intervention_state))
     @pagy, @interventions = pagy(@filteredinterventions,items:15)
-    #@pagy, @interventions = pagy(apply_scopes(Intervention.includes(:device, :intervention_type, :user, :intervention_state)),items:10)
   end
 
   # GET /interventions/1 or /interventions/1.json
